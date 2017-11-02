@@ -198,12 +198,12 @@ class Charts extends Component {
         </div>
         <div className="charts__bar flex flex-center">
           <div className="charts__bar__text p-5  py-0 justify">
-            You will live Mistral for 3 months, get to know its employees and join in all epic activities. You have a chance to become a junior at Mistral and to contribute in making the web a better place for the biggest clients alongside the finest teams. After the successful completion of the program, we expect you to be able to get the requirements from a client, analyze them, make a project plan, design a database, draw wireframes, make mockups, write code to provide Web API services and finally convert data to useful information directly to user’s screen.
+            You will live Mistral for 3 months, get to know its employees and join in all epic activities. You have a chance to become a junior at Mistral and to contribute in making the web a better place for the biggest clients alongside the finest teams. After the successful completion of the program, we expect you to be able to get the requirements from a client, analyze them, make a project plan, design a database, draw wireframes, make mockups, write code to provide Web API services and finally convert data to useful information directly to
             <span
               className="about__trigger"
               onMouseEnter={this.handleMouseEnter}
             >
-              <a href="3"> user’s screen</a>
+              <a href="http://www.gigischool.com " target="_blank"> user’s screen</a>
             </span>.
           </div>
           <div className="w-50 p-5  py-0">
