@@ -192,27 +192,13 @@ class Charts extends Component {
             </div>
           </div>
           <div className="charts__pie__text p-5 py-0 justify">
-            The aim of the school is to equip the participants with the skills
-            they need for a good start in the software development industry.
-            What better place to learn than in the company that specialises in
-            software development. We started shy back in March 2015 with 6
-            participants and 6 got a job at the end of the internship. To date,
-            37 amazing people went through the program, 22 got a job at Mistral
-            and the rest also found their place in the IT industry in Bosnia and
-            Herzegovina, and abroad.
+            As Mistral grew, we realised that aspiring developers who were applying for work lacked knowledge and skills essential for the work we do.
+            The aim of Gigi School of Coding is to equip you with the skills needed for a great start in the software development industry. What better place to learn than in the company that has owned this field for 7 executive years now? The internship was launched back in March 2015 with 6 participants. All 6 got a job at the end of the internship. To date, 37 amazing people went through the program, 22 got a job at Mistral and the rest also found their place in the IT industry in our country, and abroad.
           </div>
         </div>
         <div className="charts__bar flex flex-center">
           <div className="charts__bar__text p-5  py-0 justify">
-            During the 3 months at Gigi School, you will live Mistral, get to
-            know its employees and join in all fun activities. You have a chance
-            to become useful and promising junior after that period.
-            <br />
-            After the successful completion of the program, we expect you to be
-            able to get the requirements from a client, analyze them, make a
-            project plan, design a database, draw wireframes, make mockups,
-            write code to provide Web API services and finally convert data to
-            useful information directly to
+            You will live Mistral for 3 months, get to know its employees and join in all epic activities. You have a chance to become a junior at Mistral and to contribute in making the web a better place for the biggest clients alongside the finest teams. After the successful completion of the program, we expect you to be able to get the requirements from a client, analyze them, make a project plan, design a database, draw wireframes, make mockups, write code to provide Web API services and finally convert data to useful information directly to user’s screen.
             <span
               className="about__trigger"
               onMouseEnter={this.handleMouseEnter}
