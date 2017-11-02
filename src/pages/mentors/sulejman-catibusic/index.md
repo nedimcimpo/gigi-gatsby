@@ -2,6 +2,7 @@
 path: '/mentors/sulejman-catibusic'
 id: 'sulejman-catibusic'
 position: 'Teacher'
+type: "mentor"
 name: 'Sulejman Ćatibušić'
 title: 'Sulejman Ćatibušić'
 image: '/img/mentors/sulejman-catibusic.jpg'

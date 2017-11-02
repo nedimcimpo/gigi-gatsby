@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Scrollchor from 'react-scrollchor';
+import Link from 'gatsby-link';
 
 import './style.scss';
 import StickyHeader from '../sticky/';
@@ -20,30 +21,40 @@ export default class Header extends Component {
                 <span className="logo__text">Gigi School of Coding</span>
               </h1>
             </a>
-            <nav className="nav">
-              <Scrollchor
-                to="#about"
-                className="inline-block mr-2 link link--gigi"
-                animate={{ offset: -80, duration: 800 }}
-              >
-                <span>About</span>
-              </Scrollchor>
-              <Scrollchor
-                to="#testimonials"
-                className="inline-block mr-2 link link--gigi"
-                animate={{ offset: -80, duration: 800 }}
-              >
-                <span>Testimonials</span>
-              </Scrollchor>
+            {this.props.isSinglePage && (
+              <nav className="nav">
+                <Link to="/" className="inline-block mr-2 link link--gigi">
+                  <span>Home</span>
+                </Link>
+              </nav>
+            )}
 
-              <Scrollchor
-                to="#mentors"
-                className="inline-block mr-2 link link--gigi"
-                animate={{ offset: -80, duration: 800 }}
-              >
-                <span>Mentors</span>
-              </Scrollchor>
-            </nav>
+            {!this.props.isSinglePage && (
+              <nav className="nav">
+                <Scrollchor
+                  to="#about"
+                  className="inline-block mr-2 link link--gigi"
+                  animate={{ offset: -80, duration: 800 }}
+                >
+                  <span>About</span>
+                </Scrollchor>
+                <Scrollchor
+                  to="#testimonials"
+                  className="inline-block mr-2 link link--gigi"
+                  animate={{ offset: -80, duration: 800 }}
+                >
+                  <span>Testimonials</span>
+                </Scrollchor>
+
+                <Scrollchor
+                  to="#mentors"
+                  className="inline-block mr-2 link link--gigi"
+                  animate={{ offset: -80, duration: 800 }}
+                >
+                  <span>Mentors</span>
+                </Scrollchor>
+              </nav>
+            )}
           </div>
         </header>
       </StickyHeader>

@@ -1,6 +1,7 @@
 ---
 path: '/mentors/aldin-selimovic'
 id: 'aldin-selimovic'
+type: "mentor"
 position: 'Teacher'
 name: 'Aldin Selimović'
 title: 'Aldin Selimović'

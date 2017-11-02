@@ -7,6 +7,8 @@ import Hero from '../sections/Hero';
 import Count from '../sections/Count';
 import Charts from '../sections/Charts';
 import Mentors from '../sections/Mentors';
+import Courses from '../sections/Courses';
+import Testimonials from '../sections/Testimonials';
 
 import Footer from '../sections/Footer';
 
@@ -26,6 +28,8 @@ const Index = ({ location }) => (
     <Count data={countData} />
     <Charts />
     <Mentors data={MentorsData} />
+    <Courses data={CoursesData} />
+    <Testimonials data={TestimonialsData} />
     <Footer />
   </div>
 );

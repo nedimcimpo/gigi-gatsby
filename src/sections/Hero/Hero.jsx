@@ -18,7 +18,7 @@ const Hero = props => (
   >
     {!props.removeText && (
       <div className="hero__inner w-100 h-100 mx-auto py-4 px-6 flex flex-start flex-xcenter flex-wrap flex-column">
-        <h2 className="title z-1">
+        <h2 className="hero__title z-1">
           <span className="inline-block">{props.data.pretitle}</span>
           <span className="block">{props.data.midtitle}</span>
           <div className="block typing__block">

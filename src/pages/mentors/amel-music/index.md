@@ -2,6 +2,7 @@
 path: '/mentors/amel-music'
 id: 'amel-music'
 position: 'Teacher'
+type: "mentor"
 name: 'Amel Musić'
 title: 'Amel Musić'
 image: '/img/mentors/amel-music.jpg'

@@ -2,10 +2,9 @@ const path = require('path');
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
+  const singlePage = path.resolve('src/templates/single.js');
 
-  const postTemplate = path.resolve('src/templates/mentor.js');
-
-  return graphql(`
+  graphql(`
     {
       allMarkdownRemark {
         edges {
@@ -19,6 +18,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               id
               position
               name
+              type
             }
           }
         }
@@ -32,7 +32,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     res.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
         path: node.frontmatter.path,
-        component: postTemplate,
+        component: singlePage,
       });
     });
   });

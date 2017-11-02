@@ -1,8 +1,8 @@
-import { h } from 'preact';
+import React from 'react';
 
 const Image = ({ name, location = '' }) => (
   <img
-    src={`../../assets/img/${location}${location !== '' ? '/' : ''}${name}.jpg`}
+    src={`/img/${location}${location !== '' ? '/' : ''}${name}.jpg`}
     alt={name}
   />
 );

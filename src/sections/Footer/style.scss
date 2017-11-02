@@ -66,6 +66,7 @@
   }
   .public_call {
     color: $primary3;
+    text-transform: initial;
     &:hover {
       opacity: 0.7;
       transition: 0.3s easy-out;

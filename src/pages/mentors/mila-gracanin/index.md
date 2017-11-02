@@ -2,6 +2,7 @@
 path: '/mentors/mila-gracanin'
 id: 'mila-gracanin'
 position: 'Teacher'
+type: "mentor"
 name: 'Mila Gračanin'
 title: 'Mila Gračanin'
 image: '/img/mentors/mila-gracanin.jpg'

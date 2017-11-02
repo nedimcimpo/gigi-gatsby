@@ -2,8 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Gigi School of Coding',
     url: 'https://gigischool.mistral.ba',
-    description:
-      'Gigi School of Coding official landing page',
+    description: 'Gigi School of Coding official landing page',
   },
   plugins: [
     {

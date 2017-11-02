@@ -20,7 +20,7 @@ const Mentors = props => (
               className={
                 index === 0 ? 'item item--hero' : 'item item--standard'
               }
-              key={item.name}
+              key={index}
             >
               <div className="item__img" />
               <div className="item__desc">

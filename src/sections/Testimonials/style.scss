@@ -1,134 +1,132 @@
-@import "../../style/base/vars.scss";
-@import "../../style/base/media-queries.scss";
+@import "../../css/base/vars.scss";
+@import "../../css/base/media-queries.scss";
 
-:global {
-  .testimonials {
-    overflow: hidden;
-    .testimonials__inner {
+.testimonials {
+  overflow: hidden;
+  .testimonials__inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonials__wrapper {
+    position: relative;
+    flex-wrap: wrap;
+
+    .testimonial {
+      color: #fff;
       position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+      overflow: hidden;
+      margin: 10px 1%;
+      min-width: 220px;
+      max-width: 310px;
+      max-height: 220px;
+      width: 100%;
+      color: #ffffff;
+      text-align: left;
+      background-color: #07090c;
+      font-size: 16px;
+      -webkit-perspective: 50em;
+      perspective: 50em;
 
-    .testimonials__wrapper {
-      position: relative;
-      flex-wrap: wrap;
-
-      .testimonial {
-        color: #fff;
-        position: relative;
-        overflow: hidden;
-        margin: 10px 1%;
-        min-width: 220px;
-        max-width: 310px;
-        max-height: 220px;
+      @include tablet-landscape-and-below {
         width: 100%;
-        color: #ffffff;
-        text-align: left;
-        background-color: #07090c;
-        font-size: 16px;
-        -webkit-perspective: 50em;
-        perspective: 50em;
+        max-width: 100%;
+        flex: 0 0 48%;
+      }
+
+      > * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.6s ease;
+        transition: all 0.6s ease;
+      }
+
+      img {
+        -webkit-filter: grayscale(100%);
+        -webkit-filter: grayscale(1);
+        filter: grayscale(100%);
+        filter: $primary5;
+        will-change: filter;
+        opacity: 1;
+        width: 100%;
+        -webkit-transform-origin: 50% 100%;
+        -ms-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+      } // img
+
+      figcaption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+        -webkit-transform-origin: 50% -50%;
+        -ms-transform-origin: 50% -50%;
+        transform-origin: 50% -50%;
+        z-index: 1;
+        opacity: 0;
+        padding: 20px 30px;
 
         @include tablet-landscape-and-below {
-          width: 100%;
-          max-width: 100%;
-          flex: 0 0 48%;
+          padding: 10px 25px;
         }
+      } //figcaption
 
-        > * {
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-          -webkit-transition: all 0.6s ease;
-          transition: all 0.6s ease;
+      h6,
+      p {
+        line-height: 1.5em;
+      } // h3 p
+
+      h6 {
+        margin: 0;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        @include tablet-landscape-and-below {
+          font-size: 1.4rem;
         }
+        @include mobile-landscape-and-below {
+          font-size: 1rem;
+        }
+      }
 
+      p {
+        font-size: 0.8em;
+        font-weight: 500;
+        margin: 0 0 15px;
+
+        @include tablet-landscape-and-below {
+          font-size: 1.2rem;
+          margin-bottom: 10px;
+        }
+        @include mobile-landscape-and-below {
+          font-size: 1rem;
+        }
+      }
+
+      a {
+        color: inherit;
+        text-transform: uppercase;
+      }
+
+      &:hover {
         img {
-          -webkit-filter: grayscale(100%);
-          -webkit-filter: grayscale(1);
-          filter: grayscale(100%);
-          filter: $primary5;
-          will-change: filter;
-          opacity: 1;
-          width: 100%;
-          -webkit-transform-origin: 50% 100%;
-          -ms-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
-        } // img
+          -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+          opacity: 0;
+          filter: none;
+        } // hover img
 
         figcaption {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          -webkit-transform: rotateX(-90deg);
-          transform: rotateX(-90deg);
-          -webkit-transform-origin: 50% -50%;
-          -ms-transform-origin: 50% -50%;
-          transform-origin: 50% -50%;
-          z-index: 1;
-          opacity: 0;
-          padding: 20px 30px;
-
-          @include tablet-landscape-and-below {
-            padding: 10px 25px;
-          }
-        } //figcaption
-
-        h6,
-        p {
-          line-height: 1.5em;
-        } // h3 p
-
-        h6 {
-          margin: 0;
-          font-weight: 700;
-          text-transform: uppercase;
-
-          @include tablet-landscape-and-below {
-            font-size: 1.4rem;
-          }
-          @include mobile-landscape-and-below {
-            font-size: 1rem;
-          }
-        }
-
-        p {
-          font-size: 0.8em;
-          font-weight: 500;
-          margin: 0 0 15px;
-
-          @include tablet-landscape-and-below {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-          }
-          @include mobile-landscape-and-below {
-            font-size: 1rem;
-          }
-        }
-
-        a {
-          color: inherit;
-          text-transform: uppercase;
-        }
-
-        &:hover {
-          img {
-            -webkit-transform: rotateX(90deg);
-            transform: rotateX(90deg);
-            opacity: 0;
-            filter: none;
-          } // hover img
-
-          figcaption {
-            -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-            opacity: 1;
-            -webkit-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-          } // hover figcaption
-        } // hover states
-      } // testimonial
-    }
+          -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+          opacity: 1;
+          -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+        } // hover figcaption
+      } // hover states
+    } // testimonial
   }
 }

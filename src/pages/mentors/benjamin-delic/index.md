@@ -2,6 +2,7 @@
 path: '/mentors/benjamin-delic'
 id: 'benjamin-delic'
 position: 'Teacher'
+type: "mentor"
 name: 'Benjamin Delić'
 title: 'Benjamin Delić'
 image: '/img/mentors/benjamin-delic.jpg'
