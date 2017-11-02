@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Oliver Benns',
-    url: 'https://oliverbenns.com',
+    title: 'Gigi School of Coding',
+    url: 'https://gigischool.mistral.ba',
     description:
-      'Oliver Benns is a freelance web developer working with individuals and agencies across the world.',
+      'Gigi School of Coding official landing page',
   },
   plugins: [
     {
