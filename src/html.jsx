@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { siteMetadata as config } from '../gatsby-config';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const openGraphUrl = 'http://real-creature.surge.sh/share.png';
+const openGraphUrl = 'http://gigischool.mistral.ba/share.png';
 const styles = isProduction
   ? require('!raw-loader!../public/styles.css')
   : null;
@@ -25,13 +25,13 @@ const Html = ({ body, headComponents, postBodyComponents }) => {
         {/* Meta */}
         {helmet.title.toComponent()}
         {helmet.meta.toComponent()}
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={openGraphUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@oliverbenns" />
-        <meta name="twitter:creator" content="@oliverbenns" />
-        <meta property="twitter:image" content={openGraphUrl} />
+        <meta property="og:url" content="http://gigischool.mistral.ba/">
+      <meta property="og:type" content="website">
+        <meta property="og:title" content="Gigi School of Coding">
+          <meta property="og:description" content="Gigi School of Coding">
+            <meta property="og:image" content="http://gigischool.mistral.ba/img/mentors/sulejman-catibusic-color.jpg">
+              <meta property="fb:app_id" content="1218464051537378">
+
 
         {/* Favicon */}
         <link
