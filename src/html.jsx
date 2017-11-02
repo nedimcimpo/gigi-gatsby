@@ -28,8 +28,11 @@ const Html = ({ body, headComponents, postBodyComponents }) => {
         {helmet.meta.toComponent()}
         <meta property="og:url" content="http://gigischool.mistral.ba/">
       <meta property="og:type" content="website">
-        <meta property="og:title" content="Gigi School of Coding">
-          <meta property="og:description" content="Gigi School of Coding">
+        <meta property="og:title" content="Gigi School of Coding" />
+        <meta
+          property="og:description"
+          content="The new season of Gigi School of Coding is Near, and here is everything you need to know about it."
+        />
             <meta property="og:image" content="http://gigischool.mistral.ba/img/mentors/sulejman-catibusic-color.jpg">
               <meta property="fb:app_id" content="1218464051537378">
 
