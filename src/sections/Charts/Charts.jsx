@@ -134,7 +134,7 @@ class Charts extends Component {
         id="about"
         className="charts flex flex-center flex-wrap flex-gap-2 mx-5 relative"
       >
-        <h3 className="g-title mb-3 w-100">About Us</h3>
+        <h3 className="g-title mb-3 w-100">About</h3>
         <h5
           className={`mb-1 center data-switch ${selected === 15
             ? 'selected'
