@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { siteMetadata as config } from '../gatsby-config';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const openGraphUrl = isProduction ? `${config.url}/share.png` : '/share.png';
+const openGraphUrl = 'http://real-creature.surge.sh/share.png';
 const styles = isProduction
   ? require('!raw-loader!../public/styles.css')
   : null;
