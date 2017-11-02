@@ -24,7 +24,12 @@ import {
 
 const Index = ({ location }) => (
   <div>
-    <Meta location={location} />
+    <Meta
+      location={location}
+      description={
+        'The new season of Gigi School of Coding is Near, and here is everything you need to know about it.'
+      }
+    />
     <MediaQuery query="(max-width: 1024px)">
       <ErrorPage />
     </MediaQuery>

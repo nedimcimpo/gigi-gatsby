@@ -13,18 +13,18 @@ const Meta = props => {
     { name: 'og:title', content: metaTitle },
     { name: 'og:description', content: metaDescription },
     { property: 'og:url', content: absoluteUrl },
-    { name: 'twitter:title', content: metaTitle },
-    { name: 'twitter:description', content: metaDescription },
-    { property: 'twitter:url', content: absoluteUrl },
+    {
+      property: 'og:image',
+      content: 'http://real-creature.surge.sh/img/mentors/hero2.jpg',
+    },
+    { property: 'og:title', content: 'Gigi School of Coding' },
   ];
 
   if (props.noIndex) {
     meta.push({ name: 'robots', content: 'noindex' });
   }
 
-  return (
-    <Helmet title={metaTitle} meta={meta} />
-  );
+  return <Helmet title={metaTitle} meta={meta} />;
 };
 
 export default Meta;
