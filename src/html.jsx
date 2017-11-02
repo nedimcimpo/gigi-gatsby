@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import { siteMetadata as config } from '../gatsby-config';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const openGraphUrl = 'http://real-creature.surge.sh/img/mentors/hero2.jpg';
+const openGraphUrl = 'http://gigischool.mistral.ba/share.png';
 const styles = isProduction
   ? require('!raw-loader!../public/styles.css')
   : null;
@@ -26,17 +26,18 @@ const Html = ({ body, headComponents, postBodyComponents }) => {
         {/* Meta */}
         {helmet.title.toComponent()}
         {helmet.meta.toComponent()}
-        <meta property="og:site_name" content={config.title} />
+        <meta property="og:url" content="http://gigischool.mistral.ba/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={openGraphUrl} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:title" content="Gigi School of Coding" />
         <meta
           property="og:description"
           content="The new season of Gigi School of Coding is Near, and here is everything you need to know about it."
         />
+        <meta
+          property="og:image"
+          content="http://gigischool.mistral.ba/img/mentors/sulejman-catibusic-color.jpg"
+        />
+        <meta property="fb:app_id" content="1218464051537378" />
 
         {/* Favicon */}
         <link
