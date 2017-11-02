@@ -1,0 +1,77 @@
+@import "../../css/base/vars.scss";
+@import "../../css/base/media-queries.scss";
+
+.footer {
+  background: #312f38;
+  padding: 100px 0;
+  color: #fff;
+  position: relative;
+
+  .footer__inner {
+    max-width: 1200px;
+
+    @include mobile-landscape-and-below {
+      div {
+        flex: 0 0 100%;
+        margin: 0 0 15px 0;
+      }
+    }
+  }
+
+  .footer__borders {
+    .border {
+      height: 4px;
+      padding: 4px;
+      bottom: -6px;
+      &:nth-child(1) {
+        background: $primary1;
+      }
+      &:nth-child(2) {
+        background: $primary2;
+      }
+      &:nth-child(3) {
+        background: $primary3;
+      }
+      &:nth-child(4) {
+        background: $primary4;
+      }
+    }
+  }
+
+  .footer__since {
+    text-align: center;
+    position: relative;
+    top: 4rem;
+    font-size: 14px;
+    letter-spacing: 4px;
+    opacity: 0.5;
+  }
+
+  .footer__desc {
+    &__logo {
+      max-height: 56px;
+    }
+    @include mobile-landscape-and-below {
+      max-width: 100%;
+      text-align: center;
+    }
+    p {
+      line-height: 28px;
+      font-size: 0.9rem;
+    }
+
+    span {
+      color: #e4e4e5;
+    }
+  }
+  .public_call {
+    color: $primary3;
+    &:hover {
+      opacity: 0.7;
+      transition: 0.3s easy-out;
+    }
+  }
+  .footer__copy__right {
+    font-size: 0.85rem;
+  }
+}

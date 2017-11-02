@@ -1,0 +1,69 @@
+.link,
+.link > span {
+  position: relative;
+  text-decoration: none;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    transition: transform 0.5s ease;
+  }
+}
+
+.link {
+  &.link--gigi {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 4px;
+
+    &::before,
+    &::after {
+      right: 0;
+      bottom: 0;
+      background: $primary3;
+    }
+
+    &::before {
+      width: 101%;
+      height: 2px;
+      transform: translateX(-100%);
+    }
+
+    &::after {
+      width: 2px;
+      height: 100%;
+      transform: translateY(100%);
+    }
+
+    span {
+      display: block;
+      padding: 10px;
+
+      &::before,
+      &::after {
+        left: 0;
+        top: 0;
+        background: $primary3;
+      }
+
+      &::before {
+        width: 101%;
+        height: 2px;
+        transform: translateX(100%);
+      }
+
+      &::after {
+        width: 2px;
+        height: 100%;
+        transform: translateY(-100%);
+      }
+    }
+    &:hover:before,
+    &:hover:after,
+    &:hover > span:before,
+    &:hover > span:after {
+      transform: translate(0, 0);
+    }
+  }
+}

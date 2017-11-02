@@ -1,0 +1,185 @@
+@import "../../style/base/vars.scss";
+@import "../../style/base/media-queries.scss";
+
+:global {
+  .courses {
+    .courses__inner {
+      max-width: 1200px;
+    }
+
+    .courses__wrapper {
+      @include tablet-landscape-and-below {
+        display: block;
+      }
+    }
+
+    //course card stylies
+    .course {
+      background-color: #fff;
+      color: #ffffff;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 5px;
+      min-width: 230px;
+      overflow: hidden;
+      position: relative;
+      text-align: left;
+      width: 100%;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+
+      @include tablet-landscape-and-below {
+        width: 100%;
+      }
+
+      *,
+      *::before,
+      *::after {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.45s ease;
+        transition: all 0.45s ease;
+      }
+
+      img {
+        backface-visibility: hidden;
+        max-width: 100%;
+        vertical-align: top;
+        -webkit-filter: grayscale(100%);
+        -webkit-filter: grayscale(1);
+        transition: filter 0.3s ease-in-out;
+        transition-delay: 0.3s;
+        filter: grayscale(100%);
+        filter: $primary5;
+        will-change: filter;
+      }
+
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: "";
+        background-color: $primary1;
+        opacity: 0.7;
+        -webkit-transition: all 0.45s ease;
+        transition: all 0.45s ease;
+      }
+
+      &::before {
+        -webkit-transform: skew(30deg) translateX(-80%);
+        transform: skew(30deg) translateX(-80%);
+      }
+
+      &::after {
+        -webkit-transform: skew(-30deg) translateX(-70%);
+        transform: skew(-30deg) translateX(-70%);
+      }
+
+      &:hover {
+        img {
+          filter: none;
+        }
+        .course__title,
+        .course__body {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 0.9;
+          -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+        }
+
+        &::before {
+          -webkit-transform: skew(30deg) translateX(-20%);
+          transform: skew(30deg) translateX(-20%);
+          -webkit-transition-delay: 0.05s;
+          transition-delay: 0.05s;
+        }
+
+        &::after {
+          -webkit-transform: skew(-30deg) translateX(-10%);
+          transform: skew(-30deg) translateX(-10%);
+        }
+
+        .course__caption {
+          &::before {
+            -webkit-transform: skew(30deg) translateX(-40%);
+            transform: skew(30deg) translateX(-40%);
+            -webkit-transition-delay: 0.15s;
+            transition-delay: 0.15s;
+          }
+
+          &::after {
+            -webkit-transform: skew(-30deg) translateX(-30%);
+            transform: skew(-30deg) translateX(-30%);
+            -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+          }
+
+          @include tablet-landscape-and-below {
+            padding: 45px 10% 20px 45px;
+          }
+        }
+      }
+    }
+
+    .course__caption {
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 1;
+      bottom: 0;
+      padding: 25px 10% 20px 20px;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $primary1;
+        content: "";
+        opacity: 0.85;
+        z-index: -1;
+      }
+
+      &:after {
+        -webkit-transform: skew(-30deg) translateX(-90%);
+        transform: skew(-30deg) translateX(-90%);
+      }
+    }
+
+    .course__title,
+    .course__body {
+      opacity: 0;
+      letter-spacing: 1px;
+    }
+
+    .course__title {
+      font-size: 1.2rem;
+      line-height: 1em;
+      text-transform: uppercase;
+
+      @include tablet-landscape-and-below {
+        font-size: 2rem;
+      }
+      @include tablet-landscape-and-below {
+        font-size: 1.2rem;
+      }
+    }
+    .course__body {
+      font-size: 0.95rem;
+      @include tablet-landscape-and-below {
+        font-size: 1.8rem;
+      }
+
+      @include mobile-landscape-and-below {
+        font-size: 1rem;
+      }
+    }
+  }
+}

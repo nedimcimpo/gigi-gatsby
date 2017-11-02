@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,700");
+// base imports
+@import "base/reset";
+@import "base/vars";
+@import "base/mixins";
+@import "base/links";
+@import "base/media-queries";
+@import "base/grid";
+
+// base styling
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #fafafa;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+  font-weight: 700;
+}
+
+#app {
+  height: 100%;
+
+  .lh-1 {
+    line-height: 1.375;
+  }
+}
+
+// gigi title
+.g-title {
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 40px;
+
+  &::after {
+    content: "";
+    width: 20%;
+    background: $primary1;
+    height: 5px;
+    bottom: 0;
+    left: 40%;
+    position: absolute;
+  }
+}

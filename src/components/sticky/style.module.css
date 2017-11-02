@@ -1,0 +1,17 @@
+.header__top {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  color: white;
+  z-index: 50;
+  opacity: 0.9;
+  will-change: transform;
+  height: 72px;
+}
+
+.header__top--unfixed {
+  position: relative;
+  transform: translateY(0);
+}

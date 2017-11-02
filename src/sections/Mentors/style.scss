@@ -1,0 +1,218 @@
+@import "../../css/base/vars";
+
+@import "../../css/base/media-queries.scss";
+
+.mentors {
+  @include tablet-landscape-and-below {
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  @include mobile-landscape-and-below {
+    padding: 0 15px;
+  }
+
+  .mentors__link {
+    color: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.mentors__wrapper {
+  max-width: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  .item {
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    margin: 0.5vmin;
+    flex: 1 1;
+    min-height: 500px;
+    position: relative;
+    transition: all 1.3s cubic-bezier(1, -1.9, 0.2, 1.4);
+    cursor: pointer;
+
+    @include mobile-landscape-and-below {
+      display: block;
+      margin: 0;
+      max-width: 100%;
+      flex: 0 0 100%;
+    }
+
+    .item__img {
+      width: 100%;
+      height: 100%;
+      transform: scale(1.1);
+      transition: all 0.9s cubic-bezier(0.8, -0.5, 0.2, 1.7);
+      background-repeat: no-repeat;
+      background-position: center 45px;
+
+      @include mobile-landscape-and-below {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center 50px;
+      }
+    } // mentor image cover
+
+    .item__desc {
+      position: absolute;
+      top: 11%;
+      left: 7%;
+      opacity: 0;
+      height: 90%;
+      width: 45%;
+      transform: translateX(-10%);
+      -webkit-transition: all 0.5s cubic-bezier(0.8, -0.5, 0.2, 1.7);
+      transition: all 0.5s cubic-bezier(0.8, -0.5, 0.2, 1.7);
+      //force jiggle
+      border: 2px solid transparent;
+
+      @include mobile-landscape-and-below {
+        top: 0;
+        width: 100%;
+        left: 0;
+      }
+
+      h5 {
+        text-transform: uppercase;
+      }
+
+      figcaption {
+        font-size: 1.2rem;
+
+        @include mobile-landscape-and-below {
+          margin: 0;
+        }
+      }
+    } // mentor image description
+
+    &:hover {
+      .item__desc {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    } // default mentor hover
+
+    &--hero {
+      flex-basis: 600px;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
+      transition: all 1.3s cubic-bezier(1, -1.9, 0.2, 1.4);
+
+      &:hover {
+        .item__img {
+          transform: scale(1);
+          clip-path: polygon(100% 100%, 100% 0px, 53% 0px, 50% 98%);
+          @include mobile-landscape-and-below {
+            clip-path: polygon(100% 100%, 100% 23%, 0 65%, 0 100%);
+          }
+        }
+      }
+
+      .item__img {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
+        background-image: url("../../assets/img/mentors/sulejman-catibusic.jpg");
+      }
+    } // first mentor item(hero)
+
+    &--standard {
+      transition: all 1.3s cubic-bezier(1, -1.9, 0.2, 1.4);
+      &:nth-child(2) {
+        flex-basis: 600px;
+        -webkit-clip-path: polygon(0 5%, 0 86%, 90% 81%, 100% 6%);
+        clip-path: polygon(0 5%, 0 86%, 90% 81%, 100% 6%);
+        transition: all 1.3s cubic-bezier(1, -1.9, 0.2, 1.4);
+
+        &:hover {
+          .item__img {
+            transform: scale(1);
+            clip-path: polygon(100% 100%, 100% 0px, 55% 0px, 50% 98%);
+
+            @include mobile-landscape-and-below {
+              clip-path: polygon(100% 100%, 100% 23%, 0 65%, 0 100%);
+            }
+          }
+        }
+
+        .item__img {
+          clip-path: polygon(0% 7%, 4% 84%, 90% 96%, 98% 0%);
+          background-image: url("../../assets/img/mentors/aldin-selimovic.jpg");
+        }
+      }
+      &:nth-child(3) {
+        flex-basis: 600px;
+        -webkit-clip-path: polygon(13% 6%, 4% 84%, 100% 100%, 100% 0%);
+        clip-path: polygon(13% 6%, 4% 84%, 100% 100%, 100% 0%);
+
+        &:hover {
+          .item__img {
+            transform: scale(1);
+            clip-path: polygon(100% 100%, 100% 0px, 60% 0px, 50% 98%);
+            @include mobile-landscape-and-below {
+              clip-path: polygon(100% 100%, 100% 23%, 0 65%, 0 100%);
+            }
+          }
+        }
+
+        .item__img {
+          clip-path: polygon(0% 7%, 4% 84%, 90% 96%, 98% 0%);
+          background-image: url("../../assets/img/mentors/benjamin-delic.jpg");
+        }
+
+        .item__desc {
+          left: 11%;
+        }
+      }
+      &:nth-child(4) {
+        flex-basis: 600px;
+        -webkit-clip-path: polygon(45% 0, 100% 15%, 100% 100%, 0 100%, 0 5%);
+        clip-path: polygon(45% 0, 100% 15%, 100% 100%, 0 100%, 0 5%);
+
+        &:hover {
+          .item__img {
+            transform: scale(1);
+            clip-path: polygon(100% 100%, 100% 0px, 60% 0px, 50% 98%);
+            @include mobile-landscape-and-below {
+              clip-path: polygon(100% 100%, 100% 23%, 0 65%, 0 100%);
+            }
+          }
+        }
+
+        .item__img {
+          clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
+          background-image: url("../../assets/img/mentors/amel-music.jpg");
+        }
+      }
+      &:nth-child(5) {
+        flex-basis: 600px;
+        -webkit-clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
+        clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
+        max-width: 600px;
+        margin: 0 auto;
+
+        &:hover {
+          .item__img {
+            transform: scale(1);
+            clip-path: polygon(100% 100%, 100% 0px, 60% 0px, 50% 98%);
+            @include mobile-landscape-and-below {
+              clip-path: polygon(100% 100%, 100% 23%, 0 65%, 0 100%);
+            }
+          }
+        }
+
+        .item__img {
+          clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
+          background-image: url("../../assets/img/mentors/mila-gracanin.jpg");
+        }
+      }
+    } // standard mentor item
+  } // itme
+} // wrapper

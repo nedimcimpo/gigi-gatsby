@@ -1,0 +1,73 @@
+@import "../../css/base/vars";
+@import "../../css/base/mixins";
+@import "../../css/base/media-queries";
+
+.hero {
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+
+  .hero__inner {
+    min-height: 70vh;
+
+    @include tablet-landscape-and-below {
+      padding: 2rem 3.5rem;
+    }
+
+    @include mobile-landscape-and-below {
+      padding: 2rem 1rem;
+    }
+  }
+
+  &:not(.remove-overlay)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    @include linear-gradient("to bottom right", #333, #631d76);
+    opacity: 0.8;
+  }
+
+  .title {
+    line-height: 52px;
+
+    @include mobile-landscape-and-below {
+      font-size: 1.8rem;
+      line-height: 38px;
+    }
+  } // hero title
+
+  .typing__block {
+    div {
+      @include mobile-landscape-and-below {
+        display: block;
+      }
+    }
+
+    .typing {
+      color: $white;
+      padding: 0 10px;
+
+      @include mobile-landscape-and-below {
+        padding: 0px 1rem 0 0;
+        margin: 0;
+      }
+
+      div {
+        @include mobile-landscape-and-below {
+          padding: 0;
+        }
+      }
+    } // typing
+  } // typing blocks
+}
+
+.hero__btn {
+  cursor: not-allowed;
+  opacity: 0.9;
+  color: $primary3;
+  font-size: 1.2rem;
+  font-weight: 500;
+}

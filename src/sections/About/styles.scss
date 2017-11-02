@@ -1,0 +1,56 @@
+@import "../../style/base/vars.scss";
+
+:global {
+  .about {
+    .about__inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .about__text {
+      position: relative;
+      line-height: 1.5;
+      max-width: 60em;
+      margin: 0 auto;
+      font-size: 1.2em;
+    } //about text
+
+    .about__trigger {
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease-out;
+      color: $primary3;
+      font-weight: 700;
+
+      a {
+        color: inherit;
+      }
+
+      &:hover {
+        color: transparent;
+        z-index: 20;
+      }
+    } // abou  trigger
+
+    .about__gif {
+      z-index: -10;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      //background: url("https://68.media.tumblr.com/50c12ecea11dd66afaf8c5ce3e3b270d/tumblr_olg0kxDxwU1vwrqfdo1_400.gif");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0;
+
+      &.show {
+        opacity: 1;
+        z-index: 10;
+      }
+    }
+  }
+}

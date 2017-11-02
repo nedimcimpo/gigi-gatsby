@@ -1,0 +1,25 @@
+:root {
+  /* Layout */
+  --wrapperWidth: 1200px;
+  --headerHeight: 48px;
+  --gutter: 20px;
+  --columnCount: 12;
+
+  /* Colors */
+  --colorBlack: #444;
+  --colorWhite: #fff;
+  --colorPrimary1: #5ab6d5;
+  --colorPrimary2: #00ad8d;
+  --colorPrimary3: #faa519;
+  --colorPrimary4: #6e1036;
+  --colorPrimary5: #4c4c4c;
+
+  /* Z Index Scale */
+  --zIndexHeader: 2;
+  --zIndexMenu: 3;
+  --zIndexHamburger: 4;
+
+}
+
+@custom-media --small (max-width: 767px);
+@custom-media --medium (max-width: 1023px);

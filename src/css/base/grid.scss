@@ -1,0 +1,43 @@
+[class^="g-"] {
+  margin-bottom: 20px;
+  min-height: 30px;
+  text-align: center;
+  padding: 20px;
+}
+@media all and(max-width: 500px) {
+  .no-mobile {
+    display: none;
+  }
+}
+@media all and(min-width: 500px) {
+  .wrapper {
+    padding: 0 20px;
+    background-color: #ffffff;
+    padding-top: 20px;
+    border-radius: 5px;
+  }
+  .gigi {
+    display: flex;
+  }
+  [class^="g-"] {
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @for $flex from 1 through 12 {
+    .g-#{$flex} {
+      flex: $flex;
+    }
+  }
+  .full-width {
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+  .space-off {
+    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
