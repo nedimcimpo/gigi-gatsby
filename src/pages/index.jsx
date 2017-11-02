@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import MediaQuery from 'react-responsive';
 
 import Meta from '../components/meta';

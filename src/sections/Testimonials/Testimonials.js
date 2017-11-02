@@ -44,14 +44,14 @@ const Tdata = [
     id: 4,
     header: 'Ilija Šamarlić',
     body:
-    "You're here reading this, means you are showing initiative. That's good, keep it up.\n" +
-    '“Learn to code” is the latest buzz in the world and everybody wants to give it a try and get involved. Can you learn it on your own? Yes, although I am sure you heard it before if you want to go fast (short distance), go alone. If you want to go far, go together. \n' +
-    "So why join Gigi School of Coding? It's simple, Gigi School of Coding will let you see and experience the whole development process and give you an awesome team to do it with.\n" +
-    "You'll be surrounded by beautiful minds and some amazing people who will guide you and give valuable feedback so you can track and manage your progress.\n" +
-    "Some of the things you'll learn involve the laying down of sound and firm grounds to build your software product (application) on, using different programming paradigms, proven practices, various tools and frameworks.\n" +
-    "You will also come to realize just how important the testing process (QA) is, and how to style your apps to be more distinctive, user friendly and intuitive (UX/UI). Interestingly you'll be exposed to concepts of agile mindset, something, once embraced, will help you add value to your coding endeavours.\n" +
-    'Mistral’s internship also provides you with an opportunity to hone your English communication skills or to break that barrier of using foreign language.\n' +
-    'Learning to code takes A LOT of time and effort, so if you are ready to be ALL in, I suggest you try your odds and apply.\n',
+      "You're here reading this, means you are showing initiative. That's good, keep it up.\n" +
+      '“Learn to code” is the latest buzz in the world and everybody wants to give it a try and get involved. Can you learn it on your own? Yes, although I am sure you heard it before if you want to go fast (short distance), go alone. If you want to go far, go together. \n' +
+      "So why join Gigi School of Coding? It's simple, Gigi School of Coding will let you see and experience the whole development process and give you an awesome team to do it with.\n" +
+      "You'll be surrounded by beautiful minds and some amazing people who will guide you and give valuable feedback so you can track and manage your progress.\n" +
+      "Some of the things you'll learn involve the laying down of sound and firm grounds to build your software product (application) on, using different programming paradigms, proven practices, various tools and frameworks.\n" +
+      "You will also come to realize just how important the testing process (QA) is, and how to style your apps to be more distinctive, user friendly and intuitive (UX/UI). Interestingly you'll be exposed to concepts of agile mindset, something, once embraced, will help you add value to your coding endeavours.\n" +
+      'Mistral’s internship also provides you with an opportunity to hone your English communication skills or to break that barrier of using foreign language.\n' +
+      'Learning to code takes A LOT of time and effort, so if you are ready to be ALL in, I suggest you try your odds and apply.\n',
     color: '#513B56',
     img: '/img/testimonials/ilija-samarlic-thumb.jpg',
     url: 'ilija-samarlic',
@@ -69,10 +69,10 @@ const Tdata = [
     id: 6,
     header: 'Edin Čongo',
     body:
-    'Before I got enrolled at Gigi School of Coding, I quit my previous job in order to pursue this new challenge. I can thank Muamer Č. (Project Manager at Mistral) for the life changing advice he gave me. This was a little shock for me and my family as I wasn’t sure if I was ready for the challenges of software development due to the lack of experience. I needed some kind of tutoring to sharpen my skills, something I knew I’d find at Mistral’s ‘Gigi School of Coding’. That internship was a big crossroad for me.\n' +
-    'You must be aware that Gigi School of Coding is not magical; you won’t progress from just physically being present. You have to work hard, invest in yourself and pursue your goals. What sets Mistral apart from others is that you will get next level support in that pursuit, starting with Gigi himself; sharing his decades worth of knowledge. The rest of the mentors also give their 100% to help sharpen your skills in the domains they’re most experienced in. \n' +
-    'I like how Mistral’s Human Potential team makes you feel like you’ve always been a part of the team and how an army of others assure you that you belong right there, from day one, by being open, kind and friendly. \n' +
-    'Gigi School of Coding is a one of a kind opportunity to learn from the best, acquire new knowledge every day and strive for excellence, gaining the qualities Mistral is all about. Alongside chocolate, laughter and games, of course.',
+      'Before I got enrolled at Gigi School of Coding, I quit my previous job in order to pursue this new challenge. I can thank Muamer Č. (Project Manager at Mistral) for the life changing advice he gave me. This was a little shock for me and my family as I wasn’t sure if I was ready for the challenges of software development due to the lack of experience. I needed some kind of tutoring to sharpen my skills, something I knew I’d find at Mistral’s ‘Gigi School of Coding’. That internship was a big crossroad for me.\n' +
+      'You must be aware that Gigi School of Coding is not magical; you won’t progress from just physically being present. You have to work hard, invest in yourself and pursue your goals. What sets Mistral apart from others is that you will get next level support in that pursuit, starting with Gigi himself; sharing his decades worth of knowledge. The rest of the mentors also give their 100% to help sharpen your skills in the domains they’re most experienced in. \n' +
+      'I like how Mistral’s Human Potential team makes you feel like you’ve always been a part of the team and how an army of others assure you that you belong right there, from day one, by being open, kind and friendly. \n' +
+      'Gigi School of Coding is a one of a kind opportunity to learn from the best, acquire new knowledge every day and strive for excellence, gaining the qualities Mistral is all about. Alongside chocolate, laughter and games, of course.',
     color: '#513B56',
     img: '/img/testimonials/edin-congo-thumb.jpg',
     url: 'edin-congo',
@@ -81,17 +81,17 @@ const Tdata = [
     id: 7,
     header: 'Merseda Spahić',
     body:
-    'Gigi School of Coding vastly improved my knowledge of C# and SQL among other things, and gave me a chance to experience the real IT dynamic environment everyone is buzzing about! A fantastic team of likeminded individuals in Mistral helped me realize I was on the right career path.\n' +
-    'During the internship, Gigi interns (now my dear friends and colleagues) were separated into teams of 3 or 4. Every two weeks we had to present our work (demo).\n' +
-    'Maybe this sounds scary for some, like it was for me, but sooner or later everyone will be in that situation, so it is better to get rid of fear of public speaking by practising from the very start.\n' +
-    "All the projects at Gigi School of Coding were a real deal, so switching to a real Mistral project afterwards was pretty easy. Mistral mentors and others colleagues from the company were extremely helpful and happy to provide suggestions and guidance. My university studies gave me a good foundation and prepared me for various challenges, but we are all aware that we are like uncut diamonds in need of polishing in order to shine. If you are ready to show what you're made of and shine, I suggest you apply for Gigi School of Coding and begin a new, advanced chapter of your life.\n",
+      'Gigi School of Coding vastly improved my knowledge of C# and SQL among other things, and gave me a chance to experience the real IT dynamic environment everyone is buzzing about! A fantastic team of likeminded individuals in Mistral helped me realize I was on the right career path.\n' +
+      'During the internship, Gigi interns (now my dear friends and colleagues) were separated into teams of 3 or 4. Every two weeks we had to present our work (demo).\n' +
+      'Maybe this sounds scary for some, like it was for me, but sooner or later everyone will be in that situation, so it is better to get rid of fear of public speaking by practising from the very start.\n' +
+      "All the projects at Gigi School of Coding were a real deal, so switching to a real Mistral project afterwards was pretty easy. Mistral mentors and others colleagues from the company were extremely helpful and happy to provide suggestions and guidance. My university studies gave me a good foundation and prepared me for various challenges, but we are all aware that we are like uncut diamonds in need of polishing in order to shine. If you are ready to show what you're made of and shine, I suggest you apply for Gigi School of Coding and begin a new, advanced chapter of your life.\n",
     color: '#513B56',
     img: '/img/testimonials/merseda-spahic-thumb.jpg',
     url: 'merseda-spahic',
   },
 ];
 
-export const Testimonials = props => (
+export const Testimonials = () => (
   <div id="testimonials" className="testimonials my-6">
     <div className="testimonials__inner">
       <h3 className="g-title mb-5">GIGIJEVCI: THEIR STORY</h3>
