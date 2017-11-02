@@ -1,7 +1,7 @@
 ---
 path: '/testimonials/haris-brackovic'
 id: 'haris-brackovic'
-position: 'QA'
+position: 'Developer'
 type: "testimonial"
 name: 'Haris Bračković'
 title: 'Haris Bračković'

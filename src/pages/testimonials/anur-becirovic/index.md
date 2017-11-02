@@ -1,7 +1,7 @@
 ---
 path: '/testimonials/anur-becirovic'
 id: 'anur-becirovic'
-position: 'QA'
+position: 'Developer'
 type: "testimonial"
 name: 'Anur Bećirović'
 title: 'Anur Bećirović'

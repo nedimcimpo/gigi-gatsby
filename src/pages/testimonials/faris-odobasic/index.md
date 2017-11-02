@@ -1,7 +1,7 @@
 ---
 path: '/testimonials/faris-odobasic'
 id: 'faris-odobasic'
-position: 'QA'
+position: 'Developer'
 type: "testimonial"
 name: 'Faris Odobašić'
 title: 'Faris Odobašić'

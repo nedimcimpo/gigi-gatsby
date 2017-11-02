@@ -1,7 +1,7 @@
 ---
 path: '/testimonials/ilija-samarlic'
 id: 'ilija-samarlic'
-position: 'QA'
+position: 'Developer'
 type: "testimonial"
 name: 'Ilija Šamarlić'
 title: 'Ilija Šamarlić'

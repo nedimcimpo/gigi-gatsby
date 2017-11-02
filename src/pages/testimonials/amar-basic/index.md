@@ -1,7 +1,7 @@
 ---
 path: '/testimonials/amar-basic'
 id: 'amar-basic'
-position: 'QA'
+position: 'Developer'
 type: "testimonial"
 name: 'Amar Bašić'
 title: 'Amar Bašić'
