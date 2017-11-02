@@ -14,7 +14,7 @@ export default function Template({ data }) {
 
   return (
     <div>
-      <Header />
+      <Header isSinglePage />
       <Hero
         data={HeroData}
         bgImage={
