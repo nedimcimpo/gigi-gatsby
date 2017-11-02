@@ -41,6 +41,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
     "build": "rm -rf public; gatsby build",
+    "build-win": "del /s /q public && gatsby build",
     "surge": "rm -rf public; gatsby build; surge -p ./public/ -d real-creature.surge.sh",
     "dev": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
