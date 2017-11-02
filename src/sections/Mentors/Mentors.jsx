@@ -13,7 +13,6 @@ const Mentors = props => (
     <div className="w-100 mentors__wrapper">
       {props.data &&
         Object.keys(props.data).map((item, index) => {
-          console.warn('item', item);
           const name = props.data[item].name,
             text = getFirstNWords(props.data[item].text);
           return (
