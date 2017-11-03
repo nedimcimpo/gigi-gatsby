@@ -139,7 +139,7 @@ class Charts extends Component {
           className={`mb-1 center data-switch ${selected === 15
             ? 'selected'
             : ''}`}
-          onClick={selected === 15 ? undefined : e => this.changeChartsYear(15)}
+          onClick={selected === 15 ? undefined : () => this.changeChartsYear(15)}
         >
           2015
         </h5>
@@ -147,7 +147,7 @@ class Charts extends Component {
           className={`mb-1 center data-switch ${selected === 16
             ? 'selected'
             : ''}`}
-          onClick={selected === 16 ? undefined : e => this.changeChartsYear(16)}
+          onClick={selected === 16 ? undefined : () => this.changeChartsYear(16)}
         >
           2016
         </h5>
@@ -155,7 +155,7 @@ class Charts extends Component {
           className={`mb-1 center data-switch ${selected === 17
             ? 'selected'
             : ''}`}
-          onClick={selected === 17 ? undefined : e => this.changeChartsYear(17)}
+          onClick={selected === 17 ? undefined : () => this.changeChartsYear(17)}
         >
           2017
         </h5>
@@ -181,7 +181,7 @@ class Charts extends Component {
               />
             </div>
             <div className="flex pb-2 flex-column">
-              <div className="flex pb-2 flex-center">
+              <div className="flex pb-2 flex-center legend__font__size">
                 <div className="flex flex-center  pr-2">
                   <span className="flex h-1 w-1 mr-1 legend__male" /> Male
                 </div>
@@ -215,8 +215,8 @@ class Charts extends Component {
                 margin={{
                   top: 50,
                   right: 60,
-                  bottom: 10,
-                  left: 60,
+                  bottom: 20,
+                  left: 10,
                 }}
                 padding={0.4}
                 maxValue={selected === 15 ? 8 : 'auto'}
@@ -233,7 +233,7 @@ class Charts extends Component {
               />
             </div>
             <div className="flex pb-2 flex-column">
-              <div className="flex pb-2 flex-center">
+              <div className="flex pb-2 flex-center flex-column flex-start legend__font__size">
                 <div className="flex flex-center pr-2">
                   <span
                     className="flex h-1 w-1 mr-1"

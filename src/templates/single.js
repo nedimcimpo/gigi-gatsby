@@ -27,10 +27,12 @@ export default function Template({ data }) {
         removeBgOverlay={post.frontmatter.type === 'mentor'}
       />
       <div
-        className={`block w-100 single-page ${post.frontmatter.type === 'mentor'
-          ? 'my-1'
-          : 'my-5'} mx-auto pb-5`}
+        className={`block w-100 single-page my-4 mx-auto pb-5`}
       >
+        <div className="flex flex-ycenter pb-1 felx-start uppercase">
+          <div className="bold">{post.frontmatter.name} </div>
+          {post.frontmatter.type !== 'mentor' &&<div> &nbsp; - {post.frontmatter.position}</div>}
+        </div>
         {post.frontmatter.type !== 'mentor' && (
           <div className="block float-left w-50 pr-3">
             <img
@@ -38,16 +40,9 @@ export default function Template({ data }) {
               alt={post.frontmatter.name}
               className="mentors-image"
             />
-            <div className="flex flex-ycenter pt-2 felx-start">
-              <h5>{post.frontmatter.name} </h5>
-              <div> &nbsp; - {post.frontmatter.position}</div>
-            </div>
           </div>
         )}
-        {post.frontmatter.type === 'mentor' && (
-          <h5 className="py-2">{post.frontmatter.name} </h5>
-        )}
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div dangerouslySetInnerHTML={{ __html: post.html }} className="justify" />
       </div>
 
       <Footer />

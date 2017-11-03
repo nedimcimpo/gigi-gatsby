@@ -26,7 +26,8 @@ export const AboutData = {
 };
 
 export const countData = {
-  dateUntilSubmissionOpen: 'November 03, 2017, 17:00',
+  dateUntilSubmissionOpen: 'November 04, 2017, 00:00',
+  dateUntilSubmissionCloses: 'November 19, 2017, 00:00',
 };
 export const TestimonialsData = {
   'merseda-spahic': {

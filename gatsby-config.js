@@ -4,11 +4,6 @@ module.exports = {
     url: 'http://gigischool.mistral.ba',
     description: 'The new season of Gigi School of Coding is Near, and here is everything you need to know about it.',
   },
-  airTable: {
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: 'keyEPd0DvAaDqDmuC',
-    base: 'appRGZBf5KHDlUley',
-  },
   plugins: [
     {
       resolve: 'gatsby-plugin-google-analytics',

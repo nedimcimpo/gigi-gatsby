@@ -19,18 +19,19 @@ export default function Template({ data }) {
 
       <Hero data={HeroData} bgImage="hero2" removeText />
       <div className="block w-100 single-page my-5 mx-auto">
+        <div className="flex flex-ycenter pb-1 felx-start uppercase">
+          <div class="bold">{post.frontmatter.name} </div>
+          <div> &nbsp; - {post.frontmatter.position}</div>
+        </div>
         <div className="block float-left w-50 pr-3">
           <img
             src={post.frontmatter.image}
             alt={post.frontmatter.name}
             className="mentors-image"
           />
-          <div className="flex flex-ycenter pt-2 felx-start">
-            <h5>{post.frontmatter.name} </h5>
-            <div> &nbsp; - {post.frontmatter.position}</div>
-          </div>
+
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div dangerouslySetInnerHTML={{ __html: post.html }} class="justify"/>
       </div>
 
       <Footer />
