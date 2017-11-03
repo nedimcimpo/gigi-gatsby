@@ -6,7 +6,7 @@ import axios from 'axios';
 import firebase from 'firebase';
 import 'firebase/storage';
 import FileUploader from 'react-firebase-file-uploader';
-import  Recaptcha  from 'react-recaptcha';
+import Recaptcha from 'react-recaptcha';
 // modal
 import Modal from '../../components/Modal';
 
@@ -33,7 +33,7 @@ const config = {
   storageBucket: 'FIREBASE_STORE_BUCKET',
   messagingSenderId: 'FIREBASE_MESSAGING_SENDER_ID',
 };
-let  recaptchaInstance;
+let recaptchaInstance;
 
 // initialize firebase app
 firebase.initializeApp(config);
@@ -101,11 +101,11 @@ export default class Hero extends Component {
         },
       )
       .then(() => this.setState({
-        uploadMessage: 'Success! We have received your application and will get back to you soon. Thank you for applying and good luck! - Mistral Team', uploadStatus: 'success'
-        }))
+        uploadMessage: 'Success! We have received your application and will get back to you soon. Thank you for applying and good luck! - Mistral Team', uploadStatus: 'success',
+      }))
       .catch(() => this.setState({
         uploadMessage: 'Oh No! Something went wrong. Please try again later or send your application via e-mail: amilaav@mistral.ba. Thank you and good luck! – Mistral team',
-        uploadStatus: 'error'
+        uploadStatus: 'error',
       }));
   }
 
@@ -143,11 +143,11 @@ export default class Hero extends Component {
   checkDisabled = (item) => {
     const { firstname, lastname, city, municipality, email, cvurl } = this.state;
     const checking = (item === 'firstname' ? true : firstname)
-      && (item === 'lastname' ? true : lastname )
+      && (item === 'lastname' ? true : lastname)
       && (item === 'city' ? true : city)
       && (item === 'email' ? true : email)
       && (item === 'cv' ? true : cvurl);
-    return !(city === 'Sarajevo' ? (checking && (item === 'municipality' ? true : municipality)) : checking);
+    return !(city.toLowerCase() === 'sarajevo' ? (checking && (item === 'municipality' ? true : municipality) && (item === 'city' ? municipality : city)) : checking);
   };
 
   // handle form input change value
@@ -158,7 +158,7 @@ export default class Hero extends Component {
   // file upload methods
   handleUploadStart = item => this.setState({ [`${item}IsUploading`]: true, [`${item}Progress`]: 0 });
 
-  handleProgress = (progress, item) => this.setState({  [`${item}Progress`]: progress });
+  handleProgress = (progress, item) => this.setState({ [`${item}Progress`]: progress });
 
   handleUploadError = (error, item) => this.setState({ [`${item}IsUploading`]: false, [`${item}Error`]: error });
 
@@ -167,7 +167,7 @@ export default class Hero extends Component {
       .child(filename)
       .getDownloadURL()
       .then(url => {
-       const disabled = this.checkDisabled(item);
+        const disabled = this.checkDisabled(item);
         this.setState({ [`${item}IsUploading`]: false, [`${item}Progress`]: 100, [`${item}url`]: url, disabled });
       });
   };
@@ -176,7 +176,7 @@ export default class Hero extends Component {
     console.log('Done!!!!');
   };
 
-// specifying verify callback function
+  // specifying verify callback function
   verifyCallback = function (response) {
     console.log(response);
   };
@@ -191,7 +191,7 @@ export default class Hero extends Component {
           width={70}
           height={50}
           customStyles={{
-            overflow: 'scroll'
+            overflow: 'scroll',
           }}
         >
           <h2>content</h2>
@@ -205,6 +205,7 @@ export default class Hero extends Component {
                 type="text"
                 value={this.state.firstname}
                 name="firstname"
+                placeholder="Charles"
                 id="firstname"
                 onChange={this.handleChangeInput}
                 required
@@ -219,6 +220,7 @@ export default class Hero extends Component {
                 type="text"
                 value={this.state.lastname}
                 name="lastname"
+                placeholder="Xavier"
                 id="lastname"
                 onChange={this.handleChangeInput}
                 required
@@ -234,6 +236,7 @@ export default class Hero extends Component {
                 type="text"
                 value={this.state.city}
                 name="city"
+                placeholder="New York"
                 id="city"
                 onChange={this.handleChangeInput}
                 required
@@ -250,6 +253,7 @@ export default class Hero extends Component {
                   type="text"
                   value={this.state.municipality}
                   name="municipality"
+                  placeholder="Westchester County"
                   id="municipality"
                   onChange={this.handleChangeInput}
                   required
@@ -266,6 +270,7 @@ export default class Hero extends Component {
                 type="url"
                 value={this.state.linkedin}
                 name="linkedin"
+                placeholder="https://www.linkedin.com/in/charles-xavier-7541684/"
                 id="linkedin"
                 onChange={this.handleChangeInput}
               />
@@ -280,6 +285,7 @@ export default class Hero extends Component {
                 type="url"
                 value={this.state.github}
                 name="github"
+                placeholder="https://github.com/X-Men"
                 id="github"
                 onChange={this.handleChangeInput}
               />
@@ -294,6 +300,7 @@ export default class Hero extends Component {
                 type="email"
                 value={this.state.email}
                 name="email"
+                placeholder="charles.xavier@x.man"
                 id="email"
                 onChange={this.handleChangeInput}
                 required
