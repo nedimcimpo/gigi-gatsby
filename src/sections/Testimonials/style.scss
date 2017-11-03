@@ -19,6 +19,9 @@
     @include mobile-landscape-and-below {
       padding: 0 30px;
     }
+    @include mobile-portrait-and-below {
+      padding: 0 15px;
+    }
 
     .testimonial {
       color: #fff;
@@ -102,6 +105,9 @@
         @include tablet-portrait-and-below {
           font-size: 1.2rem;
         }
+        @include mobile-portrait-and-below {
+          font-size: 1.2rem;
+        }
       }
 
       p {
@@ -115,11 +121,17 @@
         @include tablet-portrait-and-below {
           font-size: 1rem;
         }
+        @include mobile-portrait-and-below {
+          font-size: 1rem;
+        }
       }
 
       a {
         color: inherit;
         text-transform: uppercase;
+        @include mobile-portrait-and-below {
+          font-size: 1rem;
+        }
       }
 
       &:hover {

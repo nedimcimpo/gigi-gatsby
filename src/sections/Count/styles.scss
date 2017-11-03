@@ -1,0 +1,14 @@
+@import "../../css/base/vars";
+@import "../../css/base/media-queries";
+
+.count__inner {
+  @include mobile-portrait-and-below {
+    padding: 1rem !important;
+  }
+
+  h3 {
+    @include mobile-portrait-and-below {
+      font-size: 1.8rem;
+    }
+  }
+}

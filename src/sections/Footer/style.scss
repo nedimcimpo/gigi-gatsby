@@ -120,5 +120,11 @@
   }
   .footer__copy__right {
     font-size: 0.85rem;
+
+    p {
+      @include mobile-portrait-and-below {
+        text-align: left;
+      }
+    }
   }
 }

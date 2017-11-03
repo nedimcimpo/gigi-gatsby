@@ -51,6 +51,9 @@
       margin: 0 !important;
       padding: 0 30px;
     }
+    @include mobile-portrait-and-below {
+      padding: 0 10px;
+    }
 
     &__chart {
       height: 300px;
@@ -90,6 +93,10 @@
   &__pie__chart {
     text {
       font-size: 1rem !important;
+    }
+
+    @include mobile-portrait-and-below {
+      width: 300px;
     }
   }
 
