@@ -10,11 +10,17 @@
     @include mobile-landscape-and-below {
       padding: 0 30px;
     }
+    @include mobile-portrait-and-below {
+      padding: 0 15px;
+    }
   }
 
   .courses__wrapper {
     @include tablet-landscape-and-below {
       display: block;
+    }
+    @include mobile-portrait-and-below {
+      overflow: hidden;
     }
   }
 
@@ -182,6 +188,10 @@
     @include mobile-landscape-and-below {
       font-size: 1rem;
     }
+    @include mobile-portrait-and-below {
+      font-size: 0.7rem;
+      margin-bottom: 5px;
+    }
   }
 
   .course__body {
@@ -191,6 +201,10 @@
     }
     @include mobile-landscape-and-below {
       font-size: 0.8rem;
+    }
+    @include mobile-portrait-and-below {
+      padding: 0;
+      font-size: 0.7rem;
     }
   }
 }

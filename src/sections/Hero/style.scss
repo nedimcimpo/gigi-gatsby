@@ -16,7 +16,7 @@
     }
 
     @include mobile-landscape-and-below {
-      padding: 2rem 1rem;
+      padding: 4rem 1rem 0 1rem;
     }
   }
 
@@ -37,6 +37,10 @@
     @include mobile-landscape-and-below {
       font-size: 1.8rem;
       line-height: 38px;
+    }
+
+    @include mobile-portrait-and-below {
+      font-size: 1.4rem;
     }
   } // hero title
 
@@ -74,5 +78,9 @@
 
   &--active {
     cursor: pointer;
+  }
+
+  @include mobile-portrait-and-below {
+    font-size: 1rem;
   }
 }
