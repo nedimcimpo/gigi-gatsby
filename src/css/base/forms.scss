@@ -1,0 +1,82 @@
+//form group wrapper around label and input
+.form-group {
+  margin: 1em 0;
+
+  label {
+    color: #999;
+  }
+}
+
+//default input styles for minimal purposes
+textarea,
+select,
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="color"],
+input[type="file"],
+input[type="color"],
+input[type="number"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"] {
+  display: block;
+  width: 100%; // good?
+}
+
+textarea,
+select,
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="color"],
+input[type="file"],
+input[type="color"],
+input[type="number"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"] {
+  margin: 0.2em 0;
+  padding: 0.8em 0.4em;
+  border: 1px solid #ddd;
+  max-width: 100%; // ????
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  border: 0;
+  background: #e2e9e9;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #464646;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+input[type="search"] {
+  box-sizing: border-box;
+}
+
+input[type="file"] {
+  font-size: 1rem;
+  max-height: 50px;
+}
+
+input[type="image"] {
+  vertical-align: bottom;
+}

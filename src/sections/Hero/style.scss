@@ -84,3 +84,45 @@
     font-size: 1rem;
   }
 }
+
+//custom form button
+
+.form__btn {
+  color: #fff !important;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding: 12px 20px;
+  margin: 15px 0;
+  border: 1px solid transparent;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+
+  background: $primary2;
+  border: 1px solid $primary2;
+  fill: $primary2;
+  cursor: pointer;
+
+  &:hover,
+  &:hover:after,
+  &.btn-fillup:after {
+    background: darken($primary2, 10%);
+    color: darken($primary2, 30%);
+    border: 1px solid transparent;
+  }
+
+  &.disabled {
+    background: #eee;
+    color: #333;
+    border: 1px solid #d2d2d2;
+    cursor: not-allowed;
+
+    &:hover,
+    &:hover:after {
+      background: #eee;
+      color: #333;
+    }
+  }
+}
