@@ -3,6 +3,7 @@
 @import "../../css/base/media-queries";
 
 .hero {
+  background-color: $primary5;
   background-size: cover;
   background-position: center 40%;
   background-repeat: no-repeat;
@@ -40,9 +41,9 @@
   } // hero title
 
   .typing__block {
-    div {
+    .block__words {
       @include mobile-landscape-and-below {
-        display: block;
+        display: block !important;
       }
     }
 

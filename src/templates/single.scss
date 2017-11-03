@@ -8,4 +8,15 @@
     width: 80% !important;
     margin: 5rem auto !important;
   }
+
+  @include mobile-landscape-and-below {
+    width: 90% !important;
+  }
+
+  .single__avatar {
+    @include mobile-landscape-and-below {
+      width: 100%;
+      margin: 0;
+    }
+  }
 }

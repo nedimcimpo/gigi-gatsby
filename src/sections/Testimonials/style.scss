@@ -16,6 +16,9 @@
     @include tablet-landscape-and-below {
       padding: 0 60px;
     }
+    @include mobile-landscape-and-below {
+      padding: 0 30px;
+    }
 
     .testimonial {
       color: #fff;

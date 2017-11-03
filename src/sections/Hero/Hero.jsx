@@ -327,8 +327,8 @@ export default class Hero extends Component {
               </label>
               <FileUploader
                 accept="application/msword, text/plain, application/pdf"
-                name="cl"
-                id="cl"
+                name="coverLetter"
+                id="coverLetter"
                 randomizeFilename
                 storageRef={firebase.storage().ref('FIREBASE_PROJECT_ID')}
                 onUploadStart={() => this.handleUploadStart('cl')}
@@ -369,7 +369,7 @@ export default class Hero extends Component {
                     {' '}
                     {this.props.data.endtitle}
                   </span>
-                  <span className="inline-block">
+                  <span className="inline-block block__words">
                     <Typing loop className="typing mx-2" speed={50}>
                       {this.props.data.words.map(word => {
                         const num = getRandomInt(

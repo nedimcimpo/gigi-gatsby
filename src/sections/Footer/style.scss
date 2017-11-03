@@ -11,9 +11,22 @@
     max-width: 1200px;
 
     @include mobile-landscape-and-below {
+      padding: 0 30px;
+      max-width: 100%;
+      margin: 0;
       div {
         flex: 0 0 100%;
-        margin: 0 0 15px 0;
+        margin: 0 0 15px 0 !important;
+        flex-direction: column;
+      }
+
+      img {
+        margin: 0;
+      }
+
+      .flex__municipality {
+        flex-direction: row;
+        justify-content: flex-start;
       }
     }
   }
@@ -51,10 +64,19 @@
     &__logo {
       max-height: 56px;
     }
+
+    h6 {
+      @include mobile-landscape-and-below {
+        text-align: left;
+      }
+    }
+
     @include mobile-landscape-and-below {
       max-width: 100%;
       text-align: center;
+      align-items: baseline;
     }
+
     p {
       line-height: 28px;
       font-size: 0.9rem;
@@ -63,7 +85,31 @@
     span {
       color: #e4e4e5;
     }
+
+    .logo__wrapper,
+    .link__wrapper {
+      @include mobile-landscape-and-below {
+        align-items: baseline;
+      }
+    }
+
+    .link__wrapper {
+      @include mobile-landscape-and-below {
+        text-align: left;
+      }
+    }
   }
+
+  .footer__upper {
+    @include mobile-landscape-and-below {
+      align-items: baseline;
+    }
+  }
+
+  .text__municipality {
+    align-items: baseline;
+  }
+
   .public_call {
     color: $primary3;
     text-transform: initial;

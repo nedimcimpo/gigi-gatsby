@@ -7,6 +7,9 @@
     @include tablet-landscape-and-below {
       padding: 0 60px;
     }
+    @include mobile-landscape-and-below {
+      padding: 0 30px;
+    }
   }
 
   .courses__wrapper {
@@ -123,6 +126,9 @@
         @include tablet-landscape-and-below {
           padding: 45px 10% 20px 45px;
         }
+        @include mobile-landscape-and-below {
+          padding: 10px;
+        }
       }
     }
   }
@@ -136,6 +142,9 @@
     z-index: 1;
     bottom: 0;
     padding: 25px 10% 20px 20px;
+    @include mobile-landscape-and-below {
+      padding: 10px;
+    }
 
     &::after {
       position: absolute;
@@ -169,8 +178,9 @@
     @include tablet-landscape-and-below {
       font-size: 2rem;
     }
-    @include tablet-portrait-and-below {
-      font-size: 1.6rem;
+
+    @include mobile-landscape-and-below {
+      font-size: 1rem;
     }
   }
 
@@ -179,8 +189,8 @@
     @include tablet-landscape-and-below {
       font-size: 1.8rem;
     }
-    @include tablet-portrait-and-below {
-      font-size: 1.4rem;
+    @include mobile-landscape-and-below {
+      font-size: 0.8rem;
     }
   }
 }
