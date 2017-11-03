@@ -85,7 +85,7 @@ class Countdown extends Component {
     return (
       <div className="coutdown">
         <h3 className="relative block mb-2 uppercase">
-          You can <span className="countdown__apply">apply</span> in{' '}
+          You can <span className="countdown__apply">apply</span> for{' '}
         </h3>
         <div className="flex flex-wrap flex-around flex-row flex-xcenter">
           <span className="Countdown-col">
