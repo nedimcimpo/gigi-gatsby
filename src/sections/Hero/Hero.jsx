@@ -263,7 +263,7 @@ export default class Hero extends Component {
                 />
               </div>
             )}
-
+            <hr/>
             <div className="form-group">
               <label htmlFor="linkedin" className="block mb-1">
                 Linkedin:{' '}
@@ -309,7 +309,7 @@ export default class Hero extends Component {
                 required
               />
             </div>
-
+            <hr/>
             <div className="form-group">
               <label htmlFor="cv" className="block mb-1 ">
                 CV*:{' '}
@@ -358,6 +358,7 @@ export default class Hero extends Component {
                 {this.state.uploadMessage}
               </div>
             )}
+            <hr/>
             <ReCAPTCHA
               ref={el => {
                 captcha = el;
