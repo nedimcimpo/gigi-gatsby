@@ -27,14 +27,14 @@ export default function Template({ data }) {
         removeBgOverlay={post.frontmatter.type === 'mentor'}
       />
       <div className="block w-100 single-page my-4 mx-auto">
-        <div className="flex flex-ycenter pb-1 flex-start uppercase">
+        <div className="flex flex-ycenter pb-1 flex-start uppercase single__desc">
           <div className="bold">{post.frontmatter.name} </div>
           {post.frontmatter.type !== 'mentor' && (
             <div> &nbsp; - {post.frontmatter.position}</div>
           )}
         </div>
         {post.frontmatter.type !== 'mentor' && (
-          <div className="block float-left w-50 pr-3">
+          <div className="block float-left w-50 pr-3 single__avatar">
             <img
               src={post.frontmatter.image}
               alt={post.frontmatter.name}
