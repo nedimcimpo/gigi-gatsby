@@ -157,26 +157,35 @@ export default class Hero extends Component {
   handleChangeInput = event => {
     const disabled = this.checkDisabled(event.target.name);
     this.setState({ [event.target.name]: event.target.value, disabled });
-  }
+  };
   // file upload methods
-  handleUploadStart = item => this.setState({ [`${item}IsUploading`]: true, [`${item}Progress`]: 0 });
+  handleUploadStart = item =>
+    this.setState({ [`${item}IsUploading`]: true, [`${item}Progress`]: 0 });
 
-  handleProgress = (progress, item) => this.setState({ [`${item}Progress`]: progress });
+  handleProgress = (progress, item) =>
+    this.setState({ [`${item}Progress`]: progress });
 
-  handleUploadError = (error, item) => this.setState({ [`${item}IsUploading`]: false, [`${item}Error`]: error });
+  handleUploadError = (error, item) =>
+    this.setState({ [`${item}IsUploading`]: false, [`${item}Error`]: error });
 
   handleUploadSuccess = (filename, item) => {
-    firebase.storage().ref('FIREBASE_PROJECT_ID')
+    firebase
+      .storage()
+      .ref('FIREBASE_PROJECT_ID')
       .child(filename)
       .getDownloadURL()
       .then(url => {
         const disabled = this.checkDisabled(item);
-        this.setState({ [`${item}IsUploading`]: false, [`${item}Progress`]: 100, [`${item}url`]: url, disabled });
+        this.setState({
+          [`${item}IsUploading`]: false,
+          [`${item}Progress`]: 100,
+          [`${item}url`]: url,
+          disabled,
+        });
       });
   };
 
-  onRecaptchaChange = () => this.setState({showButton: true});
-
+  onRecaptchaChange = () => this.setState({ showButton: true });
 
   render() {
     return (
@@ -185,16 +194,13 @@ export default class Hero extends Component {
           visible={this.state.formModal}
           onClose={this.closeFormModal}
           measure="%"
-          width={70}
-          height={50}
-          customStyles={{
-            overflow: 'scroll',
-          }}
+          width={50}
+          height={60}
         >
-          <h2>content</h2>
+          <h4 className="mb-2">Application form</h4>
           <div className="grid grid-gap-2 grid-cols-2">
-            <div className="form-group mb-2">
-              <label htmlFor="firstname" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="firstname" className="block mb-1">
                 First name*:{' '}
               </label>
               <input
@@ -208,8 +214,8 @@ export default class Hero extends Component {
                 required
               />
             </div>
-            <div className="form-group mb-2">
-              <label htmlFor="lastname" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="lastname" className="block mb-1">
                 Last name*:{' '}
               </label>
               <input
@@ -224,8 +230,8 @@ export default class Hero extends Component {
               />
             </div>
 
-            <div className="form-group mb-2">
-              <label htmlFor="city" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="city" className="block mb-1">
                 City*:{' '}
               </label>
               <input
@@ -241,8 +247,8 @@ export default class Hero extends Component {
             </div>
 
             {this.state.city.toLowerCase().trim() === 'sarajevo' && (
-              <div className="form-group mb-2">
-                <label htmlFor="municipality" className="block mb-1 bold">
+              <div className="form-group">
+                <label htmlFor="municipality" className="block mb-1">
                   Municipality*:{' '}
                 </label>
                 <input
@@ -258,8 +264,8 @@ export default class Hero extends Component {
               </div>
             )}
 
-            <div className="form-group mb-2">
-              <label htmlFor="linkedin" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="linkedin" className="block mb-1">
                 Linkedin:{' '}
               </label>
               <input
@@ -273,8 +279,8 @@ export default class Hero extends Component {
               />
             </div>
 
-            <div className="form-group mb-2">
-              <label htmlFor="github" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="github" className="block mb-1">
                 Github:{' '}
               </label>
               <input
@@ -288,8 +294,8 @@ export default class Hero extends Component {
               />
             </div>
 
-            <div className="form-group mb-2">
-              <label htmlFor="email" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="email" className="block mb-1">
                 Email*:{' '}
               </label>
               <input
@@ -304,8 +310,8 @@ export default class Hero extends Component {
               />
             </div>
 
-            <div className="form-group mb-2">
-              <label htmlFor="cv" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="cv" className="block mb-1 ">
                 CV*:{' '}
               </label>
               <FileUploader
@@ -316,17 +322,18 @@ export default class Hero extends Component {
                 randomizeFilename
                 storageRef={firebase.storage().ref('FIREBASE_PROJECT_ID')}
                 onUploadStart={() => this.handleUploadStart('cv')}
-                onUploadError={(error) => this.handleUploadError(error, 'cv')}
-                onUploadSuccess={(filename) => this.handleUploadSuccess(filename, 'cv')}
-                onProgress={(progress) => this.handleProgress(progress, 'cv')}
+                onUploadError={error => this.handleUploadError(error, 'cv')}
+                onUploadSuccess={filename =>
+                  this.handleUploadSuccess(filename, 'cv')}
+                onProgress={progress => this.handleProgress(progress, 'cv')}
               />
               {this.state.cvIsUploading && (
                 <p className="block mt-2">Progress: {this.state.cvProgress}</p>
               )}
             </div>
 
-            <div className="form-group mb-2">
-              <label htmlFor="cl" className="block mb-1 bold">
+            <div className="form-group">
+              <label htmlFor="cl" className="block mb-1">
                 Cover letter:{' '}
               </label>
               <FileUploader
@@ -336,23 +343,41 @@ export default class Hero extends Component {
                 randomizeFilename
                 storageRef={firebase.storage().ref('FIREBASE_PROJECT_ID')}
                 onUploadStart={() => this.handleUploadStart('cl')}
-                onUploadError={(error) => this.handleUploadError(error, 'cl')}
-                onUploadSuccess={(filename) => this.handleUploadSuccess(filename, 'cl')}
-                onProgress={(progress) => this.handleProgress(progress, 'cl')}
+                onUploadError={error => this.handleUploadError(error, 'cl')}
+                onUploadSuccess={filename =>
+                  this.handleUploadSuccess(filename, 'cl')}
+                onProgress={progress => this.handleProgress(progress, 'cl')}
               />
               {this.state.clIsUploading && (
                 <p className="block mt-2">Progress: {this.state.clProgress}</p>
               )}
             </div>
 
-            {this.state.uploadMessage && <div className={this.state.uploadStatus}>{this.state.uploadMessage}</div>}
+            {this.state.uploadMessage && (
+              <div className={this.state.uploadStatus}>
+                {this.state.uploadMessage}
+              </div>
+            )}
             <ReCAPTCHA
-              ref={(el) => { captcha = el; }}
+              ref={el => {
+                captcha = el;
+              }}
               sitekey="6LecEiUTAAAAAF5aq7krUNmH9pZUD9CeYtHHHAPF"
               onChange={this.onRecaptchaChange}
             />
 
-            {(this.state.uploadStatus !== 'success' && this.state.showButton) && <button onClick={this.onFormSubmit} disabled={this.state.disabled}>Apply</button>}
+            {this.state.uploadStatus !== 'success' &&
+              this.state.showButton && (
+                <button
+                  className={`btn form__btn ${this.state.disabled
+                    ? 'disabled'
+                    : ''}`}
+                  onClick={this.onFormSubmit}
+                  disabled={this.state.disabled}
+                >
+                  Apply
+                </button>
+              )}
           </div>
         </Modal>
         <div
