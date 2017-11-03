@@ -26,9 +26,7 @@ const Meta = props => {
     meta.push({ name: 'robots', content: 'noindex' });
   }
 
-  return (
-    <Helmet title={metaTitle} meta={meta} />
-  );
+  return <Helmet title={metaTitle} meta={meta} />;
 };
 
 export default Meta;
