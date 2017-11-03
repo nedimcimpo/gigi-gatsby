@@ -213,8 +213,8 @@ export default class Hero extends Component {
           visible={this.state.formModal}
           onClose={this.closeFormModal}
           measure="%"
-          width={50}
-          height={60}
+          width={70}
+          height={70}
         >
           <h4 className="mb-2">Application form</h4>
           <div className="grid grid-gap-2 grid-cols-2">

@@ -1,3 +1,5 @@
+@import "../../css/base/media-queries";
+
 /* -- container -- */
 .modal,
 .modal-mask {
@@ -33,6 +35,13 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
   overflow-y: auto;
+  padding: 3rem;
+
+  @include desktop-and-below {
+    width: 70% !important;
+    height: 70% !important;
+    padding: 2rem;
+  }
 }
 
 .modal-dialog:focus {
