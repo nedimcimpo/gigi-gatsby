@@ -225,7 +225,7 @@ class Charts extends Component {
               className="about__trigger"
               onMouseEnter={this.handleMouseEnter}
             >
-              <a href="http://www.gigischool.com " target="_blank">
+              <a href="http://www.gigischool.com " rel="noopener noreferrer">
                 {' '}
                 user’s screen
               </a>
