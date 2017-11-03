@@ -1,7 +1,30 @@
 import React, { Component } from 'react';
 import { ResponsivePie, ResponsiveBar } from 'nivo';
+import axios from 'axios';
+import firebase from 'firebase';
+import FileUploader from 'react-firebase-file-uploader';
+
 
 import './style.scss';
+
+const configAirtable = {
+  base: 'AIRTABLE_BASE',
+  table: 'AIRTABLE_TABLE',
+  view: 'All AIRTABLE_TABLE',
+  apiKey: 'AIRTABLE_API_KEY',
+  maxRecords: '3',
+};
+
+const config = {
+  apiKey: "FIREBASE_API_KEY",
+  authDomain: "FIREBASE_AUTH_DOMAIN",
+  databaseURL: "https://FIREBASE_DATABASE_URL",
+  projectId: "FIREBASE_PROJECT_ID",
+  storageBucket: "FIREBASE_STORE_BUCKET",
+  messagingSenderId: "FIREBASE_MESSAGING_SENDER_ID"
+};
+firebase.initializeApp(config);
+
 
 class Charts extends Component {
   constructor() {
@@ -126,6 +149,54 @@ class Charts extends Component {
     this.setState({ bgShow: false });
   };
 
+  handleChangeUsername = (event) => this.setState({[event.target.name]: event.target.value});
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+  handleProgress = (progress) => this.setState({progress});
+  handleUploadError = (error) => {
+    this.setState({isUploading: false});
+    console.error(error);
+  }
+  handleUploadSuccess = (filename) => {
+    this.setState({avatar: filename, progress: 100, isUploading: false}, () => {
+        firebase.storage().ref( 'FIREBASE_PROJECT_ID' ).child( filename ).getDownloadURL().then( url => {
+            axios.post( 'https://AIRTABLE_API_URL/v0/AIRTABLE_BASE/AIRTABLE_TABLE',
+              {
+                "fields": {
+                  "Attachments": [
+                    {
+                      "url": url
+                    }
+                  ],
+                  "Email Address": "john@example.com",
+                  "First Name": this.state.firstname,
+                  "Last Name": this.state.lastname,
+                  "Full Name": `${this.state.firstname} ${this.state.lastname}`,
+                  "City": this.state.city,
+                  "Municipality": this.state.municipality,
+                  "LinkedIn Account": this.state.linkedin,
+                  "Github Account": this.state.github,
+                }
+              },
+              {
+                headers: {
+                  Authorization: 'Bearer AIRTABLE_API_KEY',
+                  'Content-type': 'application/json'
+                },
+              } )
+              .then( function ( response ) {
+                console.log( response );
+              } )
+              .catch( function ( error ) {
+                console.log( error );
+              } );
+            this.setState( { avatarURL: url } );
+          }
+        );
+      }
+
+    );
+  };
+
   render() {
     const { data, selected, bgShow } = this.state;
     const bgc = bgShow ? 'about__gif show' : 'about__gif';
@@ -134,6 +205,41 @@ class Charts extends Component {
         id="about"
         className="charts flex flex-center flex-wrap flex-gap-2 mx-5 relative"
       >
+        <form>
+          <label>Username:</label>
+          <input type="text" value={this.state.firstname} name="firstname" onChange={this.handleChangeUsername} required />
+          <input type="text" value={this.state.lastname} name="lastname" onChange={this.handleChangeUsername} required />
+          <input type="text" value={this.state.city} name="city" onChange={this.handleChangeUsername} required />
+          <input type="text" value={this.state.municipality} name="municipality" onChange={this.handleChangeUsername} />
+          <input type="url" value={this.state.linkedin} name="linkedin" onChange={this.handleChangeUsername} />
+          <input type="url" value={this.state.github} name="github" onChange={this.handleChangeUsername} />
+          <input type="email" value={this.state.email} name="email" onChange={this.handleChangeUsername} requird/>
+          <label>Avatar:</label>
+          {this.state.isUploading &&
+          <p>Progress: {this.state.progress}</p>
+          }
+          <FileUploader
+            accept="application/msword, text/plain, application/pdf"
+            name="cvUpload"
+            randomizeFilename
+            storageRef={firebase.storage().ref('FIREBASE_PROJECT_ID')}
+            onUploadStart={this.handleUploadStart}
+            onUploadError={this.handleUploadError}
+            onUploadSuccess={this.handleUploadSuccess}
+            onProgress={this.handleProgress}
+          />
+          <FileUploader
+            accept="application/msword, text/plain, application/pdf"
+            name="coverLetter"
+            randomizeFilename
+            storageRef={firebase.storage().ref('FIREBASE_PROJECT_ID')}
+            onUploadStart={this.handleUploadStart}
+            onUploadError={this.handleUploadError}
+            onUploadSuccess={this.handleUploadSuccess}
+            onProgress={this.handleProgress}
+          />
+        </form>
+
         <h3 className="g-title mb-3 w-100">About</h3>
         <h5
           className={`mb-1 center data-switch ${selected === 15
@@ -193,7 +299,7 @@ class Charts extends Component {
           </div>
           <div className="charts__pie__text p-5 py-0 justify">
             As Mistral grew, we realised that aspiring developers who were applying for work lacked knowledge and skills essential for the work we do.
-            The aim of Gigi School of Coding is to equip you with the skills needed for a great start in the software development industry. What better place to learn than in the company that has owned this field for 7 executive years now? The internship was launched back in March 2015 with 6 participants. All 6 got a job at the end of the internship. To date, 37 amazing people went through the program, 22 got a job at Mistral and the rest also found their place in the IT industry in our country, and abroad.
+            The aim of Gigi School of Coding is to equip you with the skills needed for a great start in the software development industry. What better place to learn than in the company that has owned this field for 7 executive years now? The bootcamp was launched back in March 2015 with 6 participants. All 6 got a job at the end of the bootcamp. To date, 37 amazing people went through the program, 22 got a job at Mistral and the rest also found their place in the IT industry in our country, and abroad.
           </div>
         </div>
         <div className="charts__bar flex flex-center">
