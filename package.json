@@ -28,7 +28,8 @@
     "react-responsive": "^3.0.0",
     "react-scrollchor": "^4.0.0",
     "react-tooltip": "^3.4.0",
-    "shallowequal": "^1.0.2"
+    "shallowequal": "^1.0.2",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
