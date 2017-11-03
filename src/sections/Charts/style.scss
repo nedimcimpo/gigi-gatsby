@@ -2,6 +2,10 @@
 @import "../../css/base/media-queries.scss";
 
 .charts {
+  @include mobile-landscape-and-below {
+    margin: 0 !important;
+  }
+
   .data-switch {
     position: relative;
     cursor: pointer;
@@ -43,14 +47,27 @@
     @include tablet-landscape-and-below {
       flex-direction: column;
     }
+    @include mobile-landscape-and-below {
+      margin: 0 !important;
+      padding: 0 30px;
+    }
 
     &__chart {
       height: 300px;
+
+      svg {
+        @include mobile-landscape-and-below {
+          max-width: 100%;
+        }
+      }
     }
 
     &__svg {
       @include tablet-landscape-and-below {
         width: 100% !important;
+      }
+      @include mobile-landscape-and-below {
+        padding: 0 !important;
       }
     }
 
@@ -64,6 +81,9 @@
       font-size: 1em;
       @include tablet-landscape-and-below {
         width: 100%;
+      }
+      @include mobile-landscape-and-below {
+        padding: 0 !important;
       }
     }
   }

@@ -19,6 +19,7 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      padding: 0;
     }
   }
 }
@@ -45,13 +46,18 @@
   padding-top: 15px;
 
   @include mobile-landscape-and-below {
-    display: none;
+    float: none;
   }
 
   a {
     min-width: 50px;
     text-align: center;
     color: $white;
+
+    @include mobile-landscape-and-below {
+      font-size: 0.8rem;
+      margin-right: 10px;
+    }
   }
 }
 
