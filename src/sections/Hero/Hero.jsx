@@ -59,46 +59,56 @@ export default class Hero extends Component {
 
   onFormSubmit = () => {
     const { firstname, lastname, city, municipality, email, github, linkedin, cvurl, clurl } = this.state;
-    const fullname = `${firstname} ${lastname}`;
-    axios
-      .post(
-        'https://AIRTABLE_API_URL/v0/AIRTABLE_BASE/AIRTABLE_TABLE',
-        {
-          fields: {
-            Attachments: [
-              {
-                url: cvurl,
-                filename: `${fullname} CV`,
-              },
-              {
-                url: clurl,
-                filename: `${fullname} Cover Letter`,
-              },
-            ],
-            'Email Address': email,
-            'First Name': firstname,
-            'Last Name': lastname,
-            'Full Name': fullname,
-            City: city,
-            Municipality: municipality,
-            'LinkedIn Account': linkedin,
-            'Github Account': github,
+    const temp = firstname && lastname && city && email && cvurl;
+    if ( city.toLowerCase().trim() === 'sarajevo' ? temp && municipality : temp ) {
+      const fullname = `${firstname} ${lastname}`;
+      axios
+        .post(
+          'https://AIRTABLE_API_URL/v0/AIRTABLE_BASE/AIRTABLE_TABLE',
+          {
+            fields: {
+              Attachments: [
+                {
+                  url: cvurl,
+                  filename: `${fullname} CV`,
+                },
+                {
+                  url: clurl,
+                  filename: `${fullname} Cover Letter`,
+                },
+              ],
+              'Email Address': email,
+              'First Name': firstname,
+              'Last Name': lastname,
+              'Full Name': fullname,
+              City: city,
+              Municipality: municipality,
+              'LinkedIn Account': linkedin,
+              'Github Account': github,
+            },
           },
-        },
-        {
-          headers: {
-            Authorization: 'Bearer AIRTABLE_API_KEY',
-            'Content-type': 'application/json',
+          {
+            headers: {
+              Authorization: 'Bearer AIRTABLE_API_KEY',
+              'Content-type': 'application/json',
+            },
           },
-        },
-      )
-      .then(() => this.setState({
-        uploadMessage: 'Success! We have received your application and will get back to you soon. Thank you for applying and good luck! - Mistral Team', uploadStatus: 'success',
-      }))
-      .catch(() => this.setState({
+        )
+        .then( () => this.setState( {
+          uploadMessage: 'Success! We have received your application and will get back to you soon. Thank you for applying and good luck! - Mistral Team',
+          uploadStatus: 'success',
+        } ) )
+        .catch( () => this.setState( {
+          uploadMessage: 'Oh No! Something went wrong. Please try again later or send your application via e-mail: amilaav@mistral.ba. Thank you and good luck! – Mistral team',
+          uploadStatus: 'error',
+        } ) );
+    }
+    else {
+      this.setState( {
         uploadMessage: 'Oh No! Something went wrong. Please try again later or send your application via e-mail: amilaav@mistral.ba. Thank you and good luck! – Mistral team',
         uploadStatus: 'error',
-      }));
+      } );
+    }
   }
 
   openFormModal = () => {
