@@ -4,7 +4,7 @@ import './style.scss';
 export const Footer = () => (
   <footer className="footer">
     <div className="footer__inner flex flex-wrap flex-between flex-gap-6 px-3 mx-auto">
-      <div className="block grow-1 center flex flex-center flex-gap-4">
+      <div className="block grow-1 footer__upper center flex flex-center flex-gap-4">
         <img
           src={'/img/footer-logo.png'}
           className="img-responsive"
@@ -25,7 +25,7 @@ export const Footer = () => (
       </div>
       <div className="block grow-1 footer__desc center uppercase ">
         <h6 className="mb-3">Powered by</h6>
-        <div className="w-100 flex flex-center flex-gap-3">
+        <div className="w-100 flex flex-center flex-gap-3 logo__wrapper">
           <div>
             <img
               src={'/img/logo_ilo.png'}
@@ -33,19 +33,19 @@ export const Footer = () => (
               alt="International Labour Organization"
             />
           </div>
-          <div className="flex flex-center flex-row flex-gap-2">
+          <div className="flex flex-center flex-row flex-gap-2 flex__municipality">
             <img
               src={'/img/logo_ng.png'}
               className="img-responsive footer__desc__logo"
               alt="Munipacity Novi Grad"
             />
-            <div className="flex flex-column capitalize flex-start">
+            <div className="flex flex-column capitalize flex-start text__municipality">
               <span>Municipality</span>
               <span>Novi Grad</span>
             </div>
           </div>
         </div>
-        <div className="pt-2">
+        <div className="pt-2 link__wrapper">
           <div>Public Call</div>
           <a
             href="/MISTRAL_Javni_poziv.pdf"
