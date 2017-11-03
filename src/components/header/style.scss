@@ -42,7 +42,7 @@
   color: $white;
 
   .logo__text {
-    @include mobile-landscape-and-below {
+    @include tablet-portrait-and-below {
       display: none;
     }
   }

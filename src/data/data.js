@@ -26,7 +26,7 @@ export const AboutData = {
 };
 
 export const countData = {
-  dateUntilSubmissionOpen: 'November 04, 2017, 00:00',
+  dateUntilSubmissionOpen: 'November 19, 2017, 00:00',
   dateUntilSubmissionCloses: 'November 19, 2017, 00:00',
 };
 export const TestimonialsData = {

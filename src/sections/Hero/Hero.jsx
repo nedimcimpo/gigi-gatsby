@@ -140,7 +140,7 @@ export default class Hero extends Component {
       && (item === 'city' ? true : city)
       && (item === 'email' ? true : email)
       && (item === 'cv' ? true : cvurl);
-    return !(city.toLowerCase() === 'sarajevo' ? (checking && (item === 'municipality' ? true : municipality) && (item === 'city' ? municipality : city)) : checking);
+    return !(city.toLowerCase().trim() === 'sarajevo' ? (checking && (item === 'municipality' ? true : municipality) && (item === 'city' ? municipality : city)) : checking);
   };
 
   // handle form input change value
@@ -230,7 +230,7 @@ export default class Hero extends Component {
               />
             </div>
 
-            {this.state.city === 'Sarajevo' && (
+            {this.state.city.toLowerCase().trim() === 'sarajevo' && (
               <div className="form-group mb-2">
                 <label htmlFor="municipality" className="block mb-1 bold">
                   Municipality*:{' '}
