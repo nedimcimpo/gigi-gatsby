@@ -6,7 +6,7 @@ import axios from 'axios';
 import firebase from 'firebase';
 import 'firebase/storage';
 import FileUploader from 'react-firebase-file-uploader';
-import Recaptcha from 'react-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 // modal
 import Modal from '../../components/Modal';
 
@@ -17,14 +17,6 @@ import { getRandomInt } from '../../utils/numbers';
 import './style.scss';
 
 // airtable and firebase config stuff
-const configAirtable = {
-  base: 'AIRTABLE_BASE',
-  table: 'AIRTABLE_TABLE',
-  view: 'All AIRTABLE_TABLE',
-  apiKey: 'AIRTABLE_API_KEY',
-  maxRecords: '3',
-};
-
 const config = {
   apiKey: 'FIREBASE_API_KEY',
   authDomain: 'FIREBASE_AUTH_DOMAIN',
@@ -33,8 +25,7 @@ const config = {
   storageBucket: 'FIREBASE_STORE_BUCKET',
   messagingSenderId: 'FIREBASE_MESSAGING_SENDER_ID',
 };
-let recaptchaInstance;
-
+let captcha;
 // initialize firebase app
 firebase.initializeApp(config);
 
@@ -60,8 +51,9 @@ export default class Hero extends Component {
       clurl: '',
       clError: '',
       uploadMessage: '',
-      uploadStatus: 'success',
+      uploadStatus: '',
       disabled: true,
+      showButton: false,
     };
   }
 
@@ -133,7 +125,7 @@ export default class Hero extends Component {
   };
 
   closeFormModal = () => {
-    recaptchaInstance.reset();
+    captcha.reset();
     this.setState({
       formModal: false,
       firstname: '',
@@ -152,8 +144,9 @@ export default class Hero extends Component {
       clurl: '',
       clError: '',
       uploadMessage: '',
-      uploadStatus: 'success',
+      uploadStatus: '',
       disabled: true,
+      showButton: false,
     });
   };
 
@@ -211,14 +204,7 @@ export default class Hero extends Component {
       });
   };
 
-  callback = function () {
-    console.log('Done!!!!');
-  };
-
-  // specifying verify callback function
-  verifyCallback = function (response) {
-    console.log(response);
-  };
+  onRecaptchaChange = () => this.setState({ showButton: true });
 
   render() {
     return (
@@ -391,21 +377,26 @@ export default class Hero extends Component {
                 {this.state.uploadMessage}
               </div>
             )}
-            <Recaptcha
+            <ReCAPTCHA
+              ref={el => {
+                captcha = el;
+              }}
               sitekey="6LecEiUTAAAAAF5aq7krUNmH9pZUD9CeYtHHHAPF"
-              ref={e => (recaptchaInstance = e)}
-              onloadCallback={this.callback}
+              onChange={this.onRecaptchaChange}
             />
 
-            <button
-              className={`btn form__btn ${this.state.disabled
-                ? 'disabled'
-                : ''}`}
-              onClick={this.onFormSubmit}
-              disabled={this.state.disabled}
-            >
-              Apply
-            </button>
+            {this.state.uploadStatus !== 'success' &&
+              this.state.showButton && (
+                <button
+                  className={`btn form__btn ${this.state.disabled
+                    ? 'disabled'
+                    : ''}`}
+                  onClick={this.onFormSubmit}
+                  disabled={this.state.disabled}
+                >
+                  Apply
+                </button>
+              )}
           </div>
         </Modal>
         <div
