@@ -4,7 +4,9 @@ import MediaQuery from 'react-responsive';
 // file upload modal form
 import axios from 'axios';
 import firebase from 'firebase';
+import 'firebase/storage';
 import FileUploader from 'react-firebase-file-uploader';
+import Recaptcha from 'react-recaptcha';
 // modal
 import Modal from '../../components/Modal';
 
@@ -31,6 +33,7 @@ const config = {
   storageBucket: 'FIREBASE_STORE_BUCKET',
   messagingSenderId: 'FIREBASE_MESSAGING_SENDER_ID',
 };
+let recaptchaInstance;
 
 // initialize firebase app
 firebase.initializeApp(config);
@@ -41,7 +44,69 @@ export default class Hero extends Component {
 
     this.state = {
       formModal: false,
+      firstname: '',
+      lastname: '',
+      email: '',
+      github: '',
+      linkedin: '',
+      city: '',
+      municipality: '',
+      cvIsUploading: false,
+      cvProgress: null,
+      cvurl: '',
+      cvError: '',
+      clIsUploading: false,
+      clProgress: null,
+      clurl: '',
+      clError: '',
+      uploadMessage: '',
+      uploadStatus: 'success',
+      disabled: true,
     };
+  }
+
+  onFormSubmit = () => {
+    const { firstname, lastname, city, municipality, email, github, linkedin, cvurl, clurl } = this.state;
+    const fullname = `${firstname} ${lastname}`;
+    axios
+      .post(
+        'https://AIRTABLE_API_URL/v0/AIRTABLE_BASE/AIRTABLE_TABLE',
+        {
+          fields: {
+            Attachments: [
+              {
+                url: cvurl,
+                filename: `${fullname} CV`,
+              },
+              {
+                url: clurl,
+                filename: `${fullname} Cover Letter`,
+              },
+            ],
+            'Email Address': email,
+            'First Name': firstname,
+            'Last Name': lastname,
+            'Full Name': fullname,
+            City: city,
+            Municipality: municipality,
+            'LinkedIn Account': linkedin,
+            'Github Account': github,
+          },
+        },
+        {
+          headers: {
+            Authorization: 'Bearer AIRTABLE_API_KEY',
+            'Content-type': 'application/json',
+          },
+        },
+      )
+      .then(() => this.setState({
+        uploadMessage: 'Success! We have received your application and will get back to you soon. Thank you for applying and good luck! - Mistral Team', uploadStatus: 'success',
+      }))
+      .catch(() => this.setState({
+        uploadMessage: 'Oh No! Something went wrong. Please try again later or send your application via e-mail: amilaav@mistral.ba. Thank you and good luck! – Mistral team',
+        uploadStatus: 'error',
+      }));
   }
 
   openFormModal = () => {
@@ -51,72 +116,69 @@ export default class Hero extends Component {
   };
 
   closeFormModal = () => {
+    recaptchaInstance.reset();
     this.setState({
       formModal: false,
+      firstname: '',
+      lastname: '',
+      email: '',
+      github: '',
+      linkedin: '',
+      city: '',
+      municipality: '',
+      cvIsUploading: false,
+      cvProgress: null,
+      cvurl: '',
+      cvError: '',
+      clIsUploading: false,
+      clProgress: null,
+      clurl: '',
+      clError: '',
+      uploadMessage: '',
+      uploadStatus: 'success',
+      disabled: true,
     });
   };
 
-  // handle form input change value
-  handleChangeInput = event =>
-    this.setState({ [event.target.name]: event.target.value });
-
-  // file upload methods
-  handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
-
-  handleProgress = progress => this.setState({ progress });
-
-  handleUploadError = error => {
-    this.setState({ isUploading: false });
+  checkDisabled = (item) => {
+    const { firstname, lastname, city, municipality, email, cvurl } = this.state;
+    const checking = (item === 'firstname' ? true : firstname)
+      && (item === 'lastname' ? true : lastname)
+      && (item === 'city' ? true : city)
+      && (item === 'email' ? true : email)
+      && (item === 'cv' ? true : cvurl);
+    return !(city.toLowerCase() === 'sarajevo' ? (checking && (item === 'municipality' ? true : municipality) && (item === 'city' ? municipality : city)) : checking);
   };
 
-  handleUploadSuccess = filename => {
-    this.setState(
-      { avatar: filename, progress: 100, isUploading: false },
-      () => {
-        firebase
-          .storage()
-          .ref('FIREBASE_PROJECT_ID')
-          .child(filename)
-          .getDownloadURL()
-          .then(url => {
-            axios
-              .post(
-                'https://AIRTABLE_API_URL/v0/AIRTABLE_BASE/AIRTABLE_TABLE',
-                {
-                  fields: {
-                    Attachments: [
-                      {
-                        url,
-                      },
-                    ],
-                    'Email Address': 'john@example.com',
-                    'First Name': this.state.firstname,
-                    'Last Name': this.state.lastname,
-                    'Full Name': `${this.state.firstname} ${this.state
-                      .lastname}`,
-                    City: this.state.city,
-                    Municipality: this.state.municipality,
-                    'LinkedIn Account': this.state.linkedin,
-                    'Github Account': this.state.github,
-                  },
-                },
-                {
-                  headers: {
-                    Authorization: 'Bearer AIRTABLE_API_KEY',
-                    'Content-type': 'application/json',
-                  },
-                },
-              )
-              .then(response => {
-                console.log(response);
-              })
-              .catch(error => {
-                console.log(error);
-              });
-            this.setState({ avatarURL: url });
-          });
-      },
-    );
+  // handle form input change value
+  handleChangeInput = event => {
+    const disabled = this.checkDisabled(event.target.name);
+    this.setState({ [event.target.name]: event.target.value, disabled });
+  }
+  // file upload methods
+  handleUploadStart = item => this.setState({ [`${item}IsUploading`]: true, [`${item}Progress`]: 0 });
+
+  handleProgress = (progress, item) => this.setState({ [`${item}Progress`]: progress });
+
+  handleUploadError = (error, item) => this.setState({ [`${item}IsUploading`]: false, [`${item}Error`]: error });
+
+  handleUploadSuccess = (filename, item) => {
+    firebase.storage().ref('FIREBASE_PROJECT_ID')
+      .child(filename)
+      .getDownloadURL()
+      .then(url => {
+        const disabled = this.checkDisabled(item);
+        this.setState({ [`${item}IsUploading`]: false, [`${item}Progress`]: 100, [`${item}url`]: url, disabled });
+      });
+  };
+
+  callback = function () {
+    console.log('Done!!!!');
+  };
+
+  // specifying verify callback function
+  verifyCallback = function (response) {
+    console.log(response);
   };
 
   render() {
@@ -126,20 +188,24 @@ export default class Hero extends Component {
           visible={this.state.formModal}
           onClose={this.closeFormModal}
           measure="%"
-          width={35}
+          width={70}
           height={50}
+          customStyles={{
+            overflow: 'scroll',
+          }}
         >
           <h2>content</h2>
-          <form className="grid grid-gap-2 grid-cols-2">
+          <div className="grid grid-gap-2 grid-cols-2">
             <div className="form-group mb-2">
               <label htmlFor="firstname" className="block mb-1 bold">
-                First name:{' '}
+                First name*:{' '}
               </label>
               <input
                 className="form-control"
                 type="text"
                 value={this.state.firstname}
                 name="firstname"
+                placeholder="Charles"
                 id="firstname"
                 onChange={this.handleChangeInput}
                 required
@@ -147,13 +213,14 @@ export default class Hero extends Component {
             </div>
             <div className="form-group mb-2">
               <label htmlFor="lastname" className="block mb-1 bold">
-                Last name:{' '}
+                Last name*:{' '}
               </label>
               <input
                 className="form-control"
                 type="text"
                 value={this.state.lastname}
                 name="lastname"
+                placeholder="Xavier"
                 id="lastname"
                 onChange={this.handleChangeInput}
                 required
@@ -162,13 +229,14 @@ export default class Hero extends Component {
 
             <div className="form-group mb-2">
               <label htmlFor="city" className="block mb-1 bold">
-                City:{' '}
+                City*:{' '}
               </label>
               <input
                 className="form-control"
                 type="text"
                 value={this.state.city}
                 name="city"
+                placeholder="New York"
                 id="city"
                 onChange={this.handleChangeInput}
                 required
@@ -178,15 +246,17 @@ export default class Hero extends Component {
             {this.state.city === 'Sarajevo' && (
               <div className="form-group mb-2">
                 <label htmlFor="municipality" className="block mb-1 bold">
-                  Municipality:{' '}
+                  Municipality*:{' '}
                 </label>
                 <input
                   className="form-control"
                   type="text"
                   value={this.state.municipality}
                   name="municipality"
+                  placeholder="Westchester County"
                   id="municipality"
                   onChange={this.handleChangeInput}
+                  required
                 />
               </div>
             )}
@@ -200,6 +270,7 @@ export default class Hero extends Component {
                 type="url"
                 value={this.state.linkedin}
                 name="linkedin"
+                placeholder="https://www.linkedin.com/in/charles-xavier-7541684/"
                 id="linkedin"
                 onChange={this.handleChangeInput}
               />
@@ -214,6 +285,7 @@ export default class Hero extends Component {
                 type="url"
                 value={this.state.github}
                 name="github"
+                placeholder="https://github.com/X-Men"
                 id="github"
                 onChange={this.handleChangeInput}
               />
@@ -221,13 +293,14 @@ export default class Hero extends Component {
 
             <div className="form-group mb-2">
               <label htmlFor="email" className="block mb-1 bold">
-                Email:{' '}
+                Email*:{' '}
               </label>
               <input
                 className="form-control"
                 type="email"
                 value={this.state.email}
                 name="email"
+                placeholder="charles.xavier@x.man"
                 id="email"
                 onChange={this.handleChangeInput}
                 required
@@ -235,28 +308,28 @@ export default class Hero extends Component {
             </div>
 
             <div className="form-group mb-2">
-              <label htmlFor="cvUpload" className="block mb-1 bold">
-                CV:{' '}
+              <label htmlFor="cv" className="block mb-1 bold">
+                CV*:{' '}
               </label>
               <FileUploader
                 className="form-control"
                 accept="application/msword, text/plain, application/pdf"
-                name="cvUpload"
-                id="cvUpload"
+                name="cv"
+                id="cv"
                 randomizeFilename
                 storageRef={firebase.storage().ref('FIREBASE_PROJECT_ID')}
-                onUploadStart={this.handleUploadStart}
-                onUploadError={this.handleUploadError}
-                onUploadSuccess={this.handleUploadSuccess}
-                onProgress={this.handleProgress}
+                onUploadStart={() => this.handleUploadStart('cv')}
+                onUploadError={(error) => this.handleUploadError(error, 'cv')}
+                onUploadSuccess={(filename) => this.handleUploadSuccess(filename, 'cv')}
+                onProgress={(progress) => this.handleProgress(progress, 'cv')}
               />
-              {this.state.isUploading && (
-                <p className="block mt-2">Progress: {this.state.progress}</p>
+              {this.state.cvIsUploading && (
+                <p className="block mt-2">Progress: {this.state.cvProgress}</p>
               )}
             </div>
 
             <div className="form-group mb-2">
-              <label htmlFor="coverLetter" className="block mb-1 bold">
+              <label htmlFor="cl" className="block mb-1 bold">
                 Cover letter:{' '}
               </label>
               <FileUploader
@@ -265,16 +338,25 @@ export default class Hero extends Component {
                 id="coverLetter"
                 randomizeFilename
                 storageRef={firebase.storage().ref('FIREBASE_PROJECT_ID')}
-                onUploadStart={this.handleUploadStart}
-                onUploadError={this.handleUploadError}
-                onUploadSuccess={this.handleUploadSuccess}
-                onProgress={this.handleProgress}
+                onUploadStart={() => this.handleUploadStart('cl')}
+                onUploadError={(error) => this.handleUploadError(error, 'cl')}
+                onUploadSuccess={(filename) => this.handleUploadSuccess(filename, 'cl')}
+                onProgress={(progress) => this.handleProgress(progress, 'cl')}
               />
-              {this.state.isUploading && (
-                <p className="block mt-2">Progress: {this.state.progress}</p>
+              {this.state.clIsUploading && (
+                <p className="block mt-2">Progress: {this.state.clProgress}</p>
               )}
             </div>
-          </form>
+
+            {this.state.uploadMessage && <div className={this.state.uploadStatus}>{this.state.uploadMessage}</div>}
+            <Recaptcha
+              sitekey="6LecEiUTAAAAAF5aq7krUNmH9pZUD9CeYtHHHAPF"
+              ref={e => recaptchaInstance = e}
+              onloadCallback={this.callback}
+            />
+
+            <button onClick={this.onFormSubmit} disabled={this.state.disabled}>Apply</button>
+          </div>
         </Modal>
         <div
           className={`hero relative white ${this.props.removeBgOverlay
