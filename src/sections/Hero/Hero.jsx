@@ -294,7 +294,7 @@ export default class Hero extends Component {
                     {' '}
                     {this.props.data.endtitle}
                   </span>
-                  <span className="inline-block">
+                  <span className="inline-block block__words">
                     <Typing loop className="typing mx-2" speed={50}>
                       {this.props.data.words.map(word => {
                         const num = getRandomInt(
