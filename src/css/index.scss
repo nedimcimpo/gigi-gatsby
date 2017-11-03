@@ -22,10 +22,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-
-  @include tablet-landscape-and-below {
-    overflow: hidden;
-  }
 }
 
 h1,

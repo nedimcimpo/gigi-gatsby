@@ -166,7 +166,7 @@ class Charts extends Component {
           2017
         </h5>
         <div className="charts__pie flex flex-center">
-          <div className="w-50 p-5 py-0">
+          <div className="w-50 p-5 py-0 charts__pie_svg">
             <div className="charts__pie__chart">
               <ResponsivePie
                 data={data[selected].pie}

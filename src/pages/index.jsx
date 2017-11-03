@@ -30,19 +30,17 @@ const Index = ({ location }) => (
         'The new season of Gigi School of Coding is Near, and here is everything you need to know about it.'
       }
     />
-    <MediaQuery query="(max-width: 1024px)">
+    {/* <MediaQuery query="(max-width: 1024px)">
       <ErrorPage />
-    </MediaQuery>
-    <MediaQuery query="(min-width: 1025px)">
-      <Header />
-      <Hero data={HeroData} bgImage={'hero2'} />
-      <Count data={countData} />
-      <Charts />
-      <Mentors data={MentorsData} />
-      <Courses data={CoursesData} />
-      <Testimonials data={TestimonialsData} />
-      <Footer />
-    </MediaQuery>
+    </MediaQuery> */}
+    <Header />
+    <Hero data={HeroData} bgImage={'hero2'} />
+    <Count data={countData} />
+    <Charts />
+    <Mentors data={MentorsData} />
+    <Courses data={CoursesData} />
+    <Testimonials data={TestimonialsData} />
+    <Footer />
   </div>
 );
 

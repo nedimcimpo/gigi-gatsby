@@ -4,6 +4,9 @@
 .courses {
   .courses__inner {
     max-width: 1200px;
+    @include tablet-landscape-and-below {
+      padding: 0 60px;
+    }
   }
 
   .courses__wrapper {
@@ -166,18 +169,12 @@
     @include tablet-landscape-and-below {
       font-size: 2rem;
     }
-    @include tablet-landscape-and-below {
-      font-size: 1.2rem;
-    }
   }
+
   .course__body {
     font-size: 0.9rem;
     @include tablet-landscape-and-below {
       font-size: 1.8rem;
-    }
-
-    @include mobile-landscape-and-below {
-      font-size: 1rem;
     }
   }
 }

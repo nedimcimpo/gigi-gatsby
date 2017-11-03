@@ -39,9 +39,21 @@
   &__pie,
   &__bar {
     display: flex;
+
+    @include tablet-landscape-and-below {
+      flex-direction: column;
+    }
+
     &__chart {
       height: 300px;
     }
+
+    &__svg {
+      @include tablet-landscape-and-below {
+        width: 100%;
+      }
+    }
+
     &__text {
       width: 50%;
       height: auto;
@@ -50,6 +62,9 @@
       max-width: 60em;
       margin: 0 auto;
       font-size: 1em;
+      @include tablet-landscape-and-below {
+        width: 100%;
+      }
     }
   }
   &__pie__chart {
@@ -95,6 +110,6 @@
   }
 
   .legend__font__size {
-    font-size:  .7rem;
+    font-size: 0.7rem;
   }
 }

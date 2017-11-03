@@ -13,6 +13,10 @@
     position: relative;
     flex-wrap: wrap;
 
+    @include tablet-landscape-and-below {
+      padding: 0 60px;
+    }
+
     .testimonial {
       color: #fff;
       position: relative;
@@ -33,6 +37,7 @@
         width: 100%;
         max-width: 100%;
         flex: 0 0 48%;
+        max-height: 300px;
       }
 
       > * {
@@ -70,7 +75,7 @@
         padding: 20px 30px;
 
         @include tablet-landscape-and-below {
-          padding: 10px 25px;
+          padding: 30px;
         }
       } //figcaption
 
@@ -86,9 +91,7 @@
 
         @include tablet-landscape-and-below {
           font-size: 1.4rem;
-        }
-        @include mobile-landscape-and-below {
-          font-size: 1rem;
+          margin-bottom: 10px;
         }
       }
 
@@ -99,10 +102,6 @@
 
         @include tablet-landscape-and-below {
           font-size: 1.2rem;
-          margin-bottom: 10px;
-        }
-        @include mobile-landscape-and-below {
-          font-size: 1rem;
         }
       }
 
