@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Gigi School of Coding',
-    url: 'https://gigischool.mistral.ba',
-    description: 'Gigi School of Coding official landing page',
+    url: 'http://gigischool.mistral.ba',
+    description: 'The new season of Gigi School of Coding is Near, and here is everything you need to know about it.',
   },
   plugins: [
     {

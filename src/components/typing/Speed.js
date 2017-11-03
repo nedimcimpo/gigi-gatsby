@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const Speed = () => <noscript />;
 
 Speed.updateCursor = (cursor, { ms }) => {
-	const nextCursor = cursor;
-	nextCursor.speed = ms;
-	return nextCursor;
+  const nextCursor = cursor;
+  nextCursor.speed = ms;
+  return nextCursor;
 };
 
 Speed.getName = () => 'Speed';

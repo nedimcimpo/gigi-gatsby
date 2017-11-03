@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const Delay = () => <noscript />;
 
 Delay.updateCursor = (cursor, { ms }) => {
-	const nextCursor = cursor;
-	nextCursor.delay += ms;
-	return nextCursor;
+  const nextCursor = cursor;
+  nextCursor.delay += ms;
+  return nextCursor;
 };
 
 Delay.getName = () => 'Delay';
