@@ -50,7 +50,7 @@
 
     &__svg {
       @include tablet-landscape-and-below {
-        width: 100%;
+        width: 100% !important;
       }
     }
 

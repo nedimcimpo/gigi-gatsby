@@ -169,12 +169,18 @@
     @include tablet-landscape-and-below {
       font-size: 2rem;
     }
+    @include tablet-portrait-and-below {
+      font-size: 1.6rem;
+    }
   }
 
   .course__body {
     font-size: 0.9rem;
     @include tablet-landscape-and-below {
       font-size: 1.8rem;
+    }
+    @include tablet-portrait-and-below {
+      font-size: 1.4rem;
     }
   }
 }

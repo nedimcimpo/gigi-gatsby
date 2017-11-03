@@ -77,6 +77,9 @@
         @include tablet-landscape-and-below {
           padding: 30px;
         }
+        @include tablet-portrait-and-below {
+          padding: 20px;
+        }
       } //figcaption
 
       h6,
@@ -93,6 +96,9 @@
           font-size: 1.4rem;
           margin-bottom: 10px;
         }
+        @include tablet-portrait-and-below {
+          font-size: 1.2rem;
+        }
       }
 
       p {
@@ -102,6 +108,9 @@
 
         @include tablet-landscape-and-below {
           font-size: 1.2rem;
+        }
+        @include tablet-portrait-and-below {
+          font-size: 1rem;
         }
       }
 
