@@ -45,6 +45,13 @@
       @include mobile-landscape-and-below {
         display: block;
       }
+      span {
+        &:nth-child(2) {
+          @include mobile-landscape-and-below {
+            display: block;
+          }
+        }
+      }
     }
 
     .typing {

@@ -67,7 +67,6 @@ export default class Hero extends Component {
 
   handleUploadError = error => {
     this.setState({ isUploading: false });
-    console.error(error);
   };
 
   handleUploadSuccess = filename => {
