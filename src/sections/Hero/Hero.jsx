@@ -444,7 +444,7 @@ export default class Hero extends Component {
                     data-tip="You can apply until November 18th, 2017"
                     className="block mt-3 relative z-1 link link--gigi hero__btn hero__btn--active uppercase"
                   >
-                    <span>WE LIKE THAT. LET'S PUT YOUR TALENTS TO WORK.</span>
+                    <span>WE LIKE THAT. LET'S PUT YOUR TALENTS TO WORK. APPLY HERE!</span>
                   </a>
                 </MediaQuery>
               </div>
