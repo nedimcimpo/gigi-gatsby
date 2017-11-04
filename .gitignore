@@ -31,3 +31,9 @@ node_modules
 
 # Public
 public
+
+#Jetbrain tools (Webstrom) project files
+.idea
+
+#Config file
+gatsby-config.js
