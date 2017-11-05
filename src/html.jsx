@@ -2,10 +2,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { siteMetadata as config } from '../gatsby-config';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const openGraphUrl = 'http://gigischool.mistral.ba/share.png';
 const styles = isProduction
   ? require('!raw-loader!../public/styles.css')
   : null;

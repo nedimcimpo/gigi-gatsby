@@ -30,6 +30,7 @@ const Mentors = props => (
                 <Link
                   to={`/mentors/${item}`}
                   className="mentors__link link link--gigi"
+                  target="_blank"
                 >
                   <span>Read More</span>
                 </Link>
