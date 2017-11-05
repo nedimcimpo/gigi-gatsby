@@ -123,7 +123,7 @@
 
       .item__img {
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
-        background-image: url("../../assets/img/mentors/sulejman-catibusic.jpg");
+        background-image: url("/img/mentors/sulejman-catibusic.jpg");
       }
     } // first mentor item(hero)
 
@@ -151,7 +151,7 @@
 
         .item__img {
           clip-path: polygon(0% 7%, 4% 84%, 90% 96%, 98% 0%);
-          background-image: url("../../assets/img/mentors/aldin-selimovic.jpg");
+          background-image: url("/img/mentors/aldin-selimovic.jpg");
         }
       }
       &:nth-child(3) {
@@ -174,7 +174,7 @@
 
         .item__img {
           clip-path: polygon(0% 7%, 4% 84%, 90% 96%, 98% 0%);
-          background-image: url("../../assets/img/mentors/benjamin-delic.jpg");
+          background-image: url("/img/mentors/benjamin-delic.jpg");
         }
 
         .item__desc {
@@ -204,7 +204,7 @@
 
         .item__img {
           clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
-          background-image: url("../../assets/img/mentors/amel-music.jpg");
+          background-image: url("/img/mentors/amel-music.jpg");
         }
       }
       &:nth-child(5) {
@@ -243,7 +243,7 @@
 
         .item__img {
           clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
-          background-image: url("../../assets/img/mentors/mila-gracanin.jpg");
+          background-image: url("/img/mentors/mila-gracanin.jpg");
         }
       }
     } // standard mentor item

@@ -292,7 +292,7 @@ class Charts extends Component {
           onMouseLeave={this.handleMouseLeave}
           className={bgc}
           style={{
-            backgroundImage: 'url("./img/Video-6x.gif")',
+            backgroundImage: 'url("/img/Video-6x.gif")',
           }}
         />
       </section>
