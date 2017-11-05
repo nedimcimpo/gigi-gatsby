@@ -1,9 +1,5 @@
 import React from 'react';
 
-/* import './styles.module.css';
-import '../css/reset.css';
-import '../css/document.css';
-import '../css/typography.css'; */
 import 'fractures/dist/fractures.css';
 import '../css/index.scss';
 

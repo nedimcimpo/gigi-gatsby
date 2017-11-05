@@ -1,8 +1,7 @@
 :root {
   /* Layout */
   --wrapperWidth: 1200px;
-  --headerHeight: 48px;
-  --gutter: 20px;
+  --headerHeight: 48px;  --gutter: 20px;
   --columnCount: 12;
 
   /* Colors */
