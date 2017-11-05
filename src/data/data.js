@@ -14,17 +14,6 @@ export const HeroData = {
   colors: ['#5ab6d5', '#00ad8d', '#faa519', '#6e1036'],
 };
 
-export const AboutData = {
-  first:
-    'The aim of the school is to equip the participants with the skills they need for a good start in the software development industry. What better place to learn than in the company that specialises in software development. We started shy back in March 2015 with …… participants whom we all recruited after the school. To date, 37 amazing people went through the program, 22 got a job at Mistral and the rest also found their place in the IT industry in Bosnia and Herzegovina, and abroad.',
-
-  second:
-    'After the school we expect you to be able to get the requirements from a client, analyze them, make a project plan, design a database, draw wireframes, make mockups, write code to provide Web API services and finally convert data to useful information directly to user’s screen.',
-
-  third:
-    'During the 3 months at Gigi School, you will live Mistral, get to know its employees and join in all fun activities. You have a chance to become useful and promising junior after that period.',
-};
-
 export const countData = {
   dateUntilSubmissionOpen: 'November 19, 2017, 00:00',
   dateUntilSubmissionCloses: 'November 19, 2017, 00:00',
@@ -192,3 +181,8 @@ export const CoursesData = [
       "Angular (aka Angular4) is one of the fastest, most popular open source web app frameworks today, and knowing how to use it is essential for developers. You'll learn how to create components and user interfaces, data-binding, retrieving data, and more.",
   },
 ];
+
+export const applicationModalData = {
+  success: 'Success! We have received your application and will get back to you soon. Thank you for applying and good luck! - Mistral Team',
+  error: 'Oh No! Something went wrong. Please try again later or send your application via e-mail: amilaav@mistral.ba. Thank you and good luck! – Mistral team',
+};

@@ -5,7 +5,7 @@ import Link from 'gatsby-link';
 import './style.scss';
 import StickyHeader from '../sticky/';
 
-import Logo from '../../assets/img/FIREBASE_PROJECT_ID-logo.svg';
+import Logo from '../../assets/img/gigi-school-logo.svg';
 
 export default class Header extends Component {
   render() {

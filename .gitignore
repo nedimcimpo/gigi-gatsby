@@ -35,5 +35,5 @@ public
 #Jetbrain tools (Webstrom) project files
 .idea
 
-#Config file
-gatsby-config.js
+#Config data file
+configData.js
