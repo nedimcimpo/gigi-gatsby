@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import ReactTooltip from 'react-tooltip';
-import MediaQuery from 'react-responsive';
 // file upload modal form
 import axios from 'axios';
 import firebase from 'firebase';
 import 'firebase/storage';
 import FileUploader from 'react-firebase-file-uploader';
 import ReCAPTCHA from 'react-google-recaptcha';
+import MediaQuery from 'react-responsive';
 // modal
 import Modal from '../../components/Modal';
 
@@ -172,7 +171,7 @@ export default class Hero extends Component {
 
   render() {
     return (
-      <div>
+      <div className="modal-form">
         <Modal
           visible={this.state.formModal}
           onClose={this.closeFormModal}
@@ -346,13 +345,26 @@ export default class Hero extends Component {
               </div>
             )}
 
-            <ReCAPTCHA
-              ref={el => {
-                captcha = el;
-              }}
-              sitekey={recaptchaConfig.siteKey}
-              onChange={this.onRecaptchaChange}
-            />
+            <MediaQuery query="(min-width: 480px)">
+              <ReCAPTCHA
+                ref={el => {
+                  captcha = el;
+                }}
+                sitekey={recaptchaConfig.siteKey}
+                onChange={this.onRecaptchaChange}
+              />
+            </MediaQuery>
+            <MediaQuery query="(max-width: 480px)">
+              <ReCAPTCHA
+                ref={el => {
+                  captcha = el;
+                }}
+                size="compact"
+                sitekey={recaptchaConfig.siteKey}
+                onChange={this.onRecaptchaChange}
+              />
+            </MediaQuery>
+
 
             {this.state.uploadStatus !== 'success' &&
               this.state.showButton && (
@@ -410,26 +422,15 @@ export default class Hero extends Component {
                 </div>
               </h2>
               <div className="block z-1">
-                <MediaQuery query="(max-width: 1024px)">
-                  <ReactTooltip />
-                  <a
-                    data-tip="Application form is enabled only on large screens."
-                    className="block mt-3 relative z-1 link link--gigi hero__btn uppercase"
-                  >
-                    <span>WE LIKE THAT. LET'S PUT YOUR TALENTS TO WORK.</span>
-                  </a>
-                </MediaQuery>
-                <MediaQuery query="(min-width: 1025px)">
-                  <a
-                    onClick={this.openFormModal}
-                    role="button"
-                    tabIndex="-1"
-                    data-tip="You can apply until November 18th, 2017"
-                    className="block mt-3 relative z-1 link link--gigi hero__btn hero__btn--active uppercase"
-                  >
-                    <span>WE LIKE THAT. LET'S PUT YOUR TALENTS TO WORK. APPLY HERE!</span>
-                  </a>
-                </MediaQuery>
+                <a
+                  onClick={this.openFormModal}
+                  role="button"
+                  tabIndex="-1"
+                  data-tip="You can apply until November 18th, 2017"
+                  className="block mt-3 relative z-1 link link--gigi hero__btn hero__btn--active uppercase"
+                >
+                  <span>WE LIKE THAT. LET'S PUT YOUR TALENTS TO WORK. APPLY HERE.</span>
+                </a>
               </div>
             </div>
           )}

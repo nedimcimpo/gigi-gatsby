@@ -126,3 +126,21 @@
     }
   }
 }
+
+.modal-form {
+  @include tablet-portrait-and-below {
+    .form-group {
+      margin: 0;
+    }
+    .grid-cols-2 {
+      grid-template-columns: repeat(1,1fr) !important;
+    }
+    .grid-gap-2 {
+        grid-gap: 5px;
+    }
+    .g-recaptcha {
+      transform:scale(0.77);
+      transform-origin:0 0;
+    }
+  };
+}

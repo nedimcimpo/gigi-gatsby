@@ -42,6 +42,10 @@
     height: 70% !important;
     padding: 2rem;
   }
+  @include mobile-landscape-and-below {
+    width: 100% !important;
+    padding: 1rem;
+  }
 }
 
 .modal-dialog:focus {
