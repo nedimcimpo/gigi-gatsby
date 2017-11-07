@@ -7,6 +7,7 @@ const Meta = props => {
   const metaTitle = props.title ? `${props.title} | ${mainTitle}` : mainTitle;
   const metaDescription = props.description || config.description;
   const absoluteUrl = `${config.url}${props.location.pathname}`;
+  // TODO - Deployment : Be sure to switch png with jpg. Can be removed once we go live with the new image. Same goes for the image
   const imageUrl = `${config.url}/share.png`;
   const imgWidth = 1200;
   const imgHeight = 800;
