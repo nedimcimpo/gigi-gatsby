@@ -126,19 +126,36 @@ export default class Hero extends Component {
     });
   };
 
-  checkDisabled = (item) => {
-    const { firstName, lastName, city, municipality, email, cvUrl } = this.state;
-    const checking = (item === 'firstName' ? true : firstName)
-      && (item === 'lastName' ? true : lastName)
-      && (item === 'city' ? true : city)
-      && (item === 'email' ? true : email)
-      && (item === 'cv' ? true : cvUrl);
-    return !(city.toLowerCase().trim() === 'sarajevo' ? (checking && (item === 'municipality' ? true : municipality) && (item === 'city' ? municipality : city)) : checking);
+  validateEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  hasValue = (item) => item !== '';
+
+  checkDisabled = (item, value = '') => {
+    const { firstName, lastName, city, municipality, email, cvUrl, clUrl } = this.state;
+    const mailIsValid = this.validateEmail(item === 'email' ? value : email);
+    const hasValue = this.hasValue(value);
+    const checking = (item === 'firstName' ? hasValue : this.hasValue(firstName))
+      && (item === 'lastName' ? hasValue : this.hasValue(lastName))
+      && (item === 'city' ? hasValue : this.hasValue(city))
+      && (item === 'cv' ? hasValue : this.hasValue(cvUrl))
+      && (item === 'cl' ? hasValue : this.hasValue(clUrl));
+    let municipaliltyCheck = true;
+    if (item === 'city' && value.toLowerCase().trim() === 'sarajevo' && municipality === '' ) {
+      municipaliltyCheck = false;
+    } else if (item === 'municipality') {
+      municipaliltyCheck = hasValue;
+    } else if (city.toLowerCase().trim() === 'sarajevo' && municipality === '' ) {
+      municipaliltyCheck = false;
+    }
+    return !(checking && municipaliltyCheck && mailIsValid);
   };
 
   // handle form input change value
   handleChangeInput = event => {
-    const disabled = this.checkDisabled(event.target.name);
+    const disabled = this.checkDisabled(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value, disabled });
   };
   // file upload methods
@@ -158,7 +175,7 @@ export default class Hero extends Component {
       .child(filename)
       .getDownloadURL()
       .then(url => {
-        const disabled = this.checkDisabled(item);
+        const disabled = this.checkDisabled(item, url);
         this.setState({
           [`${item}IsUploading`]: false,
           [`${item}Progress`]: 100,
@@ -320,7 +337,7 @@ export default class Hero extends Component {
 
             <div className="form-group">
               <label htmlFor="cl" className="block mb-1">
-                Cover letter:{' '}
+                Cover letter*:{' '}
               </label>
               <FileUploader
                 accept="application/msword, text/plain, application/pdf"
