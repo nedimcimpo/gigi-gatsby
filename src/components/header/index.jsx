@@ -14,7 +14,7 @@ export default class Header extends Component {
             <a href="/" className="header__link">
               <h1 className="title flex flex-wrap flex-xcenter">
                 <span className="flex flex-ycenter mr-2">
-                  <img src={'/img/gigi-school-logo.svg' }alt="gigi school logo" title="logo" />
+                  <img src={'/img/gigi-school-logo.svg'}alt="gigi school logo" title="logo" />
                 </span>
                 <span className="logo__text">Gigi School of Coding</span>
               </h1>
@@ -36,13 +36,6 @@ export default class Header extends Component {
                 >
                   <span>About</span>
                 </Scrollchor>
-                <Scrollchor
-                  to="#testimonials"
-                  className="inline-block mr-2 link link--gigi"
-                  animate={{ offset: -80, duration: 800 }}
-                >
-                  <span>Testimonials</span>
-                </Scrollchor>
 
                 <Scrollchor
                   to="#mentors"
@@ -51,6 +44,22 @@ export default class Header extends Component {
                 >
                   <span>Mentors</span>
                 </Scrollchor>
+                {/* TODO: Uncomment once hamburger icon is added */}
+                {/* <Scrollchor
+                  to="#courses"
+                  className="inline-block mr-2 link link--gigi"
+                  animate={{ offset: -80, duration: 800 }}
+                >
+                  <span>Courses</span>
+                </Scrollchor> */}
+                <Scrollchor
+                  to="#testimonials"
+                  className="inline-block mr-2 link link--gigi"
+                  animate={{ offset: -80, duration: 800 }}
+                >
+                  <span>Testimonials</span>
+                </Scrollchor>
+
               </nav>
             )}
           </div>

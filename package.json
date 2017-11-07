@@ -51,6 +51,7 @@
     "build-win": "del /s /q public && gatsby build",
     "surge": "rm -rf public; gatsby build; surge -p ./public/ -d real-creature.surge.sh",
     "surge-win": "del /s /q public && gatsby build && surge -p ./public/ -d able-care.surge.sh",
+    "test-win": "del /s /q public && gatsby build && surge -p ./public/ -d gigischool-test.surge.sh",
     "dev": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
