@@ -14,7 +14,7 @@ export default class Header extends Component {
             <a href="/" className="header__link">
               <h1 className="title flex flex-wrap flex-xcenter">
                 <span className="flex flex-ycenter mr-2">
-                  <img src={'/img/gigi-school-logo.svg'}alt="gigi school logo" title="logo" />
+                  <img src={'/img/gigi-school-logo.svg'} alt="gigi school logo" title="logo" />
                 </span>
                 <span className="logo__text">Gigi School of Coding</span>
               </h1>

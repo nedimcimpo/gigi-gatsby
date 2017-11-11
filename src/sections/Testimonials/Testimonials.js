@@ -103,7 +103,7 @@ export const Testimonials = () => (
               <h6>{item.header}</h6>
               <p>{getFirstNWords(item.body)} </p>
               <Link
-                to={`/testimonials/${item.url}`}
+                to={`/testimonials/${item.url}#testimonial`}
                 className="mentors__link link link--gigi"
                 target="_blank"
               >

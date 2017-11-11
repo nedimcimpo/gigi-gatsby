@@ -28,7 +28,7 @@ const Mentors = props => (
                 <figcaption className="mb-5">{text} </figcaption>
 
                 <Link
-                  to={`/mentors/${item}`}
+                  to={`/mentors/${item}#mentor`}
                   className="mentors__link link link--gigi"
                   target="_blank"
                 >
