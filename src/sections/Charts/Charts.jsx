@@ -118,17 +118,8 @@ class Charts extends Component {
       selected: id,
     });
   };
-  handleMouseEnter = () => {
-    this.setState({ bgShow: true });
-  };
-
-  handleMouseLeave = () => {
-    this.setState({ bgShow: false });
-  };
-
   render() {
-    const { data, selected, bgShow } = this.state;
-    const bgc = bgShow ? 'about__gif show' : 'about__gif';
+    const { data, selected } = this.state;
     return (
       <section
         id="about"
@@ -220,16 +211,7 @@ class Charts extends Component {
             requirements from a client, analyze them, make a project plan,
             design a database, draw wireframes, make mockups, write code to
             provide Web API services and finally convert data to useful
-            information directly to
-            <span
-              className="about__trigger"
-              onMouseEnter={this.handleMouseEnter}
-            >
-              <a href="http://www.gigischool.com " rel="noopener noreferrer">
-                {' '}
-                user’s screen
-              </a>
-            </span>.
+            information directly to user’s screen.
           </div>
           <div className="w-50 p-5 py-0 charts__bar__svg">
             <div className="charts__bar__chart">
@@ -288,13 +270,6 @@ class Charts extends Component {
             </div>
           </div>
         </div>
-        <div
-          onMouseLeave={this.handleMouseLeave}
-          className={bgc}
-          style={{
-            backgroundImage: 'url("/img/Video-6x.gif")',
-          }}
-        />
       </section>
     );
   }
