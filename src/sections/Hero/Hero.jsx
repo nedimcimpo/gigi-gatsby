@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactTooltip from 'react-tooltip';
 // file upload modal form
 import axios from 'axios';
 import firebase from 'firebase';
@@ -46,6 +47,7 @@ export default class Hero extends Component {
       uploadStatus: '',
       disabled: true,
       showButton: false,
+      isEmailValid: null,
     };
   }
 
@@ -97,6 +99,14 @@ export default class Hero extends Component {
       });
     }
   };
+  getButtonTooltip = () => {
+    if (this.state.uploadStatus === '' && this.state.disabled) {
+      return 'Please fill required (*) fields and check recaptcha.';
+    } else if (this.state.uploadStatus === 'success') {
+      return 'Your application has already been successful. No need to do it twice.';
+    }
+    return undefined;
+  };
 
   openFormModal = () => this.setState({ formModal: true });
 
@@ -143,11 +153,11 @@ export default class Hero extends Component {
       && (item === 'cv' ? hasValue : this.hasValue(cvUrl))
       && (item === 'cl' ? hasValue : this.hasValue(clUrl));
     let municipaliltyCheck = true;
-    if (item === 'city' && value.toLowerCase().trim() === 'sarajevo' && municipality === '' ) {
+    if (item === 'city' && value.toLowerCase().trim() === 'sarajevo' && municipality === '') {
       municipaliltyCheck = false;
     } else if (item === 'municipality') {
       municipaliltyCheck = hasValue;
-    } else if (city.toLowerCase().trim() === 'sarajevo' && municipality === '' ) {
+    } else if (city.toLowerCase().trim() === 'sarajevo' && municipality === '') {
       municipaliltyCheck = false;
     }
     return !(checking && municipaliltyCheck && mailIsValid);
@@ -158,6 +168,20 @@ export default class Hero extends Component {
     const disabled = this.checkDisabled(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value, disabled });
   };
+  handleOnEmailChange = event => {
+    const disabled = this.checkDisabled(event.target.name, event.target.value);
+    if (this.state.isEmailValid !== null) {
+      const valid = this.validateEmail(event.target.value);
+      this.setState({ [event.target.name]: event.target.value, disabled, isEmailValid: valid });
+    } else {
+      this.setState({ [event.target.name]: event.target.value, disabled });
+    }
+  };
+  handleOnBlur = event => {
+    console.log('on blur happedning');
+    const valid = this.validateEmail(event.target.value);
+    this.setState({ isEmailValid: valid });
+  }
   // file upload methods
   handleUploadStart = item =>
     this.setState({ [`${item}IsUploading`]: true, [`${item}Progress`]: 0 });
@@ -185,7 +209,6 @@ export default class Hero extends Component {
       });
   };
 
-
   render() {
     return (
       <div className="modal-form">
@@ -197,7 +220,7 @@ export default class Hero extends Component {
           height={70}
         >
           <h4 className="mb-2">Application form</h4>
-          <div className="grid grid-gap-2 grid-cols-2">
+          <div className="grid grid-gap-2 grid-cols-2 mb-2">
             <div className="form-group">
               <label htmlFor="firstName" className="block mb-1">
                 First name*:{' '}
@@ -228,7 +251,6 @@ export default class Hero extends Component {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="city" className="block mb-1">
                 City*:{' '}
@@ -244,7 +266,6 @@ export default class Hero extends Component {
                 required
               />
             </div>
-
             {this.state.city.toLowerCase().trim() === 'sarajevo' && (
               <div className="form-group">
                 <label htmlFor="municipality" className="block mb-1">
@@ -263,8 +284,7 @@ export default class Hero extends Component {
               </div>
             )}
           </div>
-          <div className="grid grid-gap-2 grid-cols-2">
-
+          <div className="grid grid-gap-2 grid-cols-2 mb-2">
             <div className="form-group">
               <label htmlFor="linkedIn" className="block mb-1">
                 Linkedin:{' '}
@@ -279,7 +299,6 @@ export default class Hero extends Component {
                 onChange={this.handleChangeInput}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="github" className="block mb-1">
                 Github:{' '}
@@ -294,8 +313,7 @@ export default class Hero extends Component {
                 onChange={this.handleChangeInput}
               />
             </div>
-
-            <div className="form-group">
+            <div className={`form-group ${this.state.isEmailValid === false ? 'email-error' : ''}`}>
               <label htmlFor="email" className="block mb-1">
                 Email*:{' '}
               </label>
@@ -306,12 +324,16 @@ export default class Hero extends Component {
                 name="email"
                 placeholder="charles.xavier@x.man"
                 id="email"
-                onChange={this.handleChangeInput}
+                onChange={this.handleOnEmailChange}
+                onBlur={this.handleOnBlur}
                 required
               />
+              {this.state.isEmailValid === false &&
+              <span className="bold">E-mail is not valid. Please enter valid e-mail.</span>
+              }
             </div>
           </div>
-          <div className="grid grid-gap-2 grid-cols-2">
+          <div className="grid grid-gap-2 grid-cols-2 mb-5">
 
             <div className="form-group">
               <label htmlFor="cv" className="block mb-1 ">
@@ -355,13 +377,13 @@ export default class Hero extends Component {
                 <p className="block mt-2">Progress: {this.state.clProgress}</p>
               )}
             </div>
-
-            {this.state.uploadMessage && (
-              <div className={this.state.uploadStatus}>
-                {this.state.uploadMessage}
-              </div>
-            )}
-
+          </div>
+          {this.state.uploadMessage && (
+            <div className={`bold ${this.state.uploadStatus} mb-5`}>
+              {this.state.uploadMessage}
+            </div>
+          )}
+          <div className="grid grid-gap-2 grid-cols-2" >
             <MediaQuery query="(min-width: 480px)">
               <ReCAPTCHA
                 ref={el => {
@@ -381,20 +403,16 @@ export default class Hero extends Component {
                 onChange={this.onRecaptchaChange}
               />
             </MediaQuery>
-
-
-            {this.state.uploadStatus !== 'success' &&
-              this.state.showButton && (
-                <button
-                  className={`btn form__btn ${this.state.disabled
-                    ? 'disabled'
-                    : ''}`}
-                  onClick={this.onFormSubmit}
-                  disabled={this.state.disabled}
-                >
-                  Apply
-                </button>
-              )}
+            <ReactTooltip />
+            <button
+              className={`btn form__btn ${this.state.disabled
+                ? 'disabled'
+                : ''}`}
+              onClick={(this.state.disabled || this.state.uploadStatus !== '') ? undefined : this.onFormSubmit}
+              data-tip={this.getButtonTooltip()}
+            >
+              Apply
+            </button>
           </div>
         </Modal>
         <div

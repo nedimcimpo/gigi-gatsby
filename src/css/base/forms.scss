@@ -1,9 +1,8 @@
 //form group wrapper around label and input
 .form-group {
-  margin: 1em 0;
 
   label {
-    color: #999;
+    color: #464646;
   }
 }
 
@@ -29,6 +28,7 @@ input[type="datetime"],
 input[type="datetime-local"] {
   display: block;
   width: 100%; // good?
+  font-family: inherit;
 }
 
 textarea,
@@ -52,19 +52,20 @@ input[type="datetime"],
 input[type="datetime-local"] {
   margin: 0.2em 0;
   padding: 0.8em 0.4em;
-  border: 1px solid #ddd;
+  border: 1px solid #999;
   max-width: 100%; // ????
   display: block;
   width: 100%;
   border-radius: 5px;
-  border: 0;
-  background: #e2e9e9;
-  font-weight: bold;
   font-size: 1.1em;
   color: #464646;
 
   &:focus {
     outline: 0;
+  }
+  &::placeholder {
+    color: #d2d2d2;
+    font-style: italic;
   }
 }
 
@@ -75,6 +76,8 @@ input[type="search"] {
 input[type="file"] {
   font-size: 1rem;
   max-height: 50px;
+  border: 0;
+  padding: 0;
 }
 
 input[type="image"] {

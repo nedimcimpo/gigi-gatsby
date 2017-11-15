@@ -128,6 +128,21 @@
 }
 
 .modal-form {
+  .email-error {
+    color: red;
+    label {
+      color: red;
+    }
+    input {
+      border: 1px solid red;
+    }
+  }
+  .success {
+    color: #00ad8d;
+  }
+  .error {
+    color: red;
+  }
   @include tablet-portrait-and-below {
     .form-group {
       margin: 0;
