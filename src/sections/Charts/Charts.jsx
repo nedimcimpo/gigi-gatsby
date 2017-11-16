@@ -212,6 +212,8 @@ class Charts extends Component {
             design a database, draw wireframes, make mockups, write code to
             provide Web API services and finally convert data to useful
             information directly to user’s screen.
+            <a href="http://www.gigischool.com/#/login" className="about__trigger" target="_blank"> HERE </a>
+            is one example of a neat and functional Web App made by Gigi students during their time at Gigi School of Coding.
           </div>
           <div className="w-50 p-5 py-0 charts__bar__svg">
             <div className="charts__bar__chart">
