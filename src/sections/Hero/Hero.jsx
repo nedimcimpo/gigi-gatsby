@@ -447,15 +447,15 @@ export default class Hero extends Component {
             </div>
             <ReactTooltip />
             <div className="w-50 flex flex-center my-2">
-            <button
-              className={`btn form__btn p-3 w-100 ${this.state.disabled
-                ? 'disabled'
-                : ''}`}
-              onClick={(this.state.disabled || this.state.uploadStatus !== '') ? undefined : this.onFormSubmit}
-              data-tip={this.getButtonTooltip()}
-            >
+              <button
+                className={`btn form__btn p-3 w-100 ${this.state.disabled
+                  ? 'disabled'
+                  : ''}`}
+                onClick={(this.state.disabled || this.state.uploadStatus !== '') ? undefined : this.onFormSubmit}
+                data-tip={this.getButtonTooltip()}
+              >
               Apply
-            </button>
+              </button>
             </div>
           </div>
         </Modal>
