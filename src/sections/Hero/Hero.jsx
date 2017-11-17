@@ -37,10 +37,12 @@ export default class Hero extends Component {
       municipality: '',
       cvIsUploading: false,
       cvProgress: null,
+      cvName: '',
       cvUrl: '',
       cvError: '',
       clIsUploading: false,
       clProgress: null,
+      clName: '',
       clUrl: '',
       clError: '',
       uploadMessage: '',
@@ -51,7 +53,10 @@ export default class Hero extends Component {
     };
   }
 
-  onRecaptchaChange = () => this.setState({ showButton: true });
+  onRecaptchaChange = () => {
+    this.checkDisabled('showButton');
+    this.setState({ showButton: true });
+  };
 
   onFormSubmit = () => {
     const { firstName, lastName, city, municipality, email, github, linkedIn, cvUrl, clUrl } = this.state;
@@ -124,10 +129,12 @@ export default class Hero extends Component {
       cvIsUploading: false,
       cvProgress: null,
       cvUrl: '',
+      cvName: '',
       cvError: '',
       clIsUploading: false,
       clProgress: null,
       clUrl: '',
+      clName: '',
       clError: '',
       uploadMessage: '',
       uploadStatus: '',
@@ -144,14 +151,15 @@ export default class Hero extends Component {
   hasValue = (item) => item !== '';
 
   checkDisabled = (item, value = '') => {
-    const { firstName, lastName, city, municipality, email, cvUrl, clUrl } = this.state;
+    const { firstName, lastName, city, municipality, email, cvUrl, clUrl, showButton } = this.state;
     const mailIsValid = this.validateEmail(item === 'email' ? value : email);
     const hasValue = this.hasValue(value);
     const checking = (item === 'firstName' ? hasValue : this.hasValue(firstName))
       && (item === 'lastName' ? hasValue : this.hasValue(lastName))
       && (item === 'city' ? hasValue : this.hasValue(city))
       && (item === 'cv' ? hasValue : this.hasValue(cvUrl))
-      && (item === 'cl' ? hasValue : this.hasValue(clUrl));
+      && (item === 'cl' ? hasValue : this.hasValue(clUrl))
+      && (item === 'showButton' || showButton);
     let municipaliltyCheck = true;
     if (item === 'city' && value.toLowerCase().trim() === 'sarajevo' && municipality === '') {
       municipaliltyCheck = false;
@@ -183,8 +191,10 @@ export default class Hero extends Component {
     this.setState({ isEmailValid: valid });
   }
   // file upload methods
-  handleUploadStart = item =>
-    this.setState({ [`${item}IsUploading`]: true, [`${item}Progress`]: 0 });
+  handleUploadStart = (event, item) => {
+    console.log(event, item);
+    this.setState({ [`${item}IsUploading`]: true, [`${item}Progress`]: 0, [`${item}Name`]: event.name });
+  }
 
   handleProgress = (progress, item) =>
     this.setState({ [`${item}Progress`]: progress });
@@ -220,8 +230,8 @@ export default class Hero extends Component {
           height={70}
         >
           <h4 className="mb-2">Application form</h4>
-          <div className="grid grid-gap-2 grid-cols-2 mb-2">
-            <div className="form-group">
+          <div className="flex flex-gap-2 mb-2">
+            <div className="form-group w-50">
               <label htmlFor="firstName" className="block mb-1">
                 First name*:{' '}
               </label>
@@ -236,7 +246,7 @@ export default class Hero extends Component {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group w-50">
               <label htmlFor="lastName" className="block mb-1">
                 Last name*:{' '}
               </label>
@@ -251,7 +261,9 @@ export default class Hero extends Component {
                 required
               />
             </div>
-            <div className="form-group">
+          </div>
+          <div className="flex flex-gap-2 mb-2">
+            <div className={`form-group w-50 ${this.state.city.toLowerCase().trim() !== 'sarajevo' && 'pr-1'}`}>
               <label htmlFor="city" className="block mb-1">
                 City*:{' '}
               </label>
@@ -267,7 +279,7 @@ export default class Hero extends Component {
               />
             </div>
             {this.state.city.toLowerCase().trim() === 'sarajevo' && (
-              <div className="form-group">
+              <div className="form-group w-50">
                 <label htmlFor="municipality" className="block mb-1">
                   Municipality*:{' '}
                 </label>
@@ -284,8 +296,9 @@ export default class Hero extends Component {
               </div>
             )}
           </div>
-          <div className="grid grid-gap-2 grid-cols-2 mb-2">
-            <div className="form-group">
+          <div className="flex flex-gap-2 mb-2">
+
+            <div className="form-group w-50">
               <label htmlFor="linkedIn" className="block mb-1">
                 Linkedin:{' '}
               </label>
@@ -299,7 +312,7 @@ export default class Hero extends Component {
                 onChange={this.handleChangeInput}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group w-50">
               <label htmlFor="github" className="block mb-1">
                 Github:{' '}
               </label>
@@ -313,7 +326,9 @@ export default class Hero extends Component {
                 onChange={this.handleChangeInput}
               />
             </div>
-            <div className={`form-group ${this.state.isEmailValid === false ? 'email-error' : ''}`}>
+          </div>
+          <div className="flex flex-gap-2 mb-2">
+            <div className={`form-group w-50 ${this.state.isEmailValid === false ? 'email-error' : ''} pr-1`}>
               <label htmlFor="email" className="block mb-1">
                 Email*:{' '}
               </label>
@@ -329,83 +344,111 @@ export default class Hero extends Component {
                 required
               />
               {this.state.isEmailValid === false &&
-              <span className="bold">E-mail is not valid. Please enter valid e-mail.</span>
+                <span className="bold">E-mail is not valid. Please enter valid e-mail.</span>
               }
             </div>
           </div>
-          <div className="grid grid-gap-2 grid-cols-2 mb-5">
-
-            <div className="form-group">
-              <label htmlFor="cv" className="block mb-1 ">
-                CV*:{' '}
+          <div className="flex flex-gap-2 mb-2">
+            <div className="form-group w-50">
+              <label htmlFor="cv" className=" flex flex-center mb-1 upload_button p-2" >
+                CV*
+                <FileUploader
+                  className="form-control"
+                  accept="application/msword, text/plain, application/pdf"
+                  name="cv"
+                  id="cv"
+                  hidden
+                  randomizeFilename
+                  storageRef={firebase.storage().ref(firebaseConfig.projectId)}
+                  onUploadStart={(e) => this.handleUploadStart(e, 'cv')}
+                  onUploadError={error => this.handleUploadError(error, 'cv')}
+                  onUploadSuccess={filename =>
+                    this.handleUploadSuccess(filename, 'cv')}
+                  onProgress={progress => this.handleProgress(progress, 'cv')}
+                />
               </label>
-              <FileUploader
-                className="form-control"
-                accept="application/msword, text/plain, application/pdf"
-                name="cv"
-                id="cv"
-                randomizeFilename
-                storageRef={firebase.storage().ref(firebaseConfig.projectId)}
-                onUploadStart={() => this.handleUploadStart('cv')}
-                onUploadError={error => this.handleUploadError(error, 'cv')}
-                onUploadSuccess={filename =>
-                  this.handleUploadSuccess(filename, 'cv')}
-                onProgress={progress => this.handleProgress(progress, 'cv')}
-              />
+              <p className="block break-word">
+                {this.state.cvName}
+              </p>
               {this.state.cvIsUploading && (
                 <p className="block mt-2">Progress: {this.state.cvProgress}</p>
               )}
             </div>
-
-            <div className="form-group">
-              <label htmlFor="cl" className="block mb-1">
-                Cover letter*:{' '}
+            <div className="form-group w-50">
+              <label htmlFor="coverLetter" className="flex flex-center mb-1 upload_button p-2" >
+                Cover letter*
+                <FileUploader
+                  accept="application/msword, text/plain, application/pdf"
+                  name="coverLetter"
+                  id="coverLetter"
+                  hidden
+                  randomizeFilename
+                  storageRef={firebase.storage().ref(firebaseConfig.projectId)}
+                  onUploadStart={(e) => this.handleUploadStart(e, 'cl')}
+                  onUploadError={error => this.handleUploadError(error, 'cl')}
+                  onUploadSuccess={filename =>
+                    this.handleUploadSuccess(filename, 'cl')}
+                  onProgress={progress => this.handleProgress(progress, 'cl')}
+                />
               </label>
-              <FileUploader
-                accept="application/msword, text/plain, application/pdf"
-                name="coverLetter"
-                id="coverLetter"
-                randomizeFilename
-                storageRef={firebase.storage().ref(firebaseConfig.projectId)}
-                onUploadStart={() => this.handleUploadStart('cl')}
-                onUploadError={error => this.handleUploadError(error, 'cl')}
-                onUploadSuccess={filename =>
-                  this.handleUploadSuccess(filename, 'cl')}
-                onProgress={progress => this.handleProgress(progress, 'cl')}
-              />
+              <p className="block break-word">
+                {this.state.clName}
+              </p>
               {this.state.clIsUploading && (
                 <p className="block mt-2">Progress: {this.state.clProgress}</p>
               )}
             </div>
           </div>
           {this.state.uploadMessage && (
-            <div className={`bold ${this.state.uploadStatus} mb-5`}>
+            <div className={`bold ${this.state.uploadStatus} mb-3`}>
               {this.state.uploadMessage}
             </div>
           )}
-          <div className="grid grid-gap-2 grid-cols-2" >
-            <MediaQuery query="(min-width: 480px)">
-              <ReCAPTCHA
-                ref={el => {
-                  captcha = el;
-                }}
-                sitekey={recaptchaConfig.siteKey}
-                onChange={this.onRecaptchaChange}
-              />
-            </MediaQuery>
-            <MediaQuery query="(max-width: 480px)">
-              <ReCAPTCHA
-                ref={el => {
-                  captcha = el;
-                }}
-                size="compact"
-                sitekey={recaptchaConfig.siteKey}
-                onChange={this.onRecaptchaChange}
-              />
-            </MediaQuery>
+          <div className="flex flex-gap-2 mb-2">
+            <div className="w-50 recptcha-wrapper my-2">
+              <MediaQuery minWidth={976}>
+                <ReCAPTCHA
+                  ref={el => {
+                    captcha = el;
+                  }}
+                  sitekey={recaptchaConfig.siteKey}
+                  onChange={this.onRecaptchaChange}
+                />
+              </MediaQuery>
+              <MediaQuery minWidth={768} maxWidth={976}>
+                <ReCAPTCHA
+                  ref={el => {
+                    captcha = el;
+                  }}
+                  size="compact"
+                  sitekey={recaptchaConfig.siteKey}
+                  onChange={this.onRecaptchaChange}
+                />
+              </MediaQuery>
+              <MediaQuery minWidth={480} maxWidth={768} >
+                <ReCAPTCHA
+                  ref={el => {
+                    captcha = el;
+                  }}
+                  sitekey={recaptchaConfig.siteKey}
+                  onChange={this.onRecaptchaChange}
+                />
+              </MediaQuery>
+              <MediaQuery maxWidth={480}>
+                <ReCAPTCHA
+                  ref={el => {
+                    captcha = el;
+                  }}
+                  size="compact"
+                  sitekey={recaptchaConfig.siteKey}
+                  onChange={this.onRecaptchaChange}
+                />
+              </MediaQuery>
+            </div>
             <ReactTooltip />
+            <div className="w-50 flex flex-center my-2">
             <button
-              className={`btn form__btn ${this.state.disabled
+              className={`btn form__btn p-3 w-100 ${this.state.disabled
                 ? 'disabled'
                 : ''}`}
               onClick={(this.state.disabled || this.state.uploadStatus !== '') ? undefined : this.onFormSubmit}
@@ -413,6 +456,7 @@ export default class Hero extends Component {
             >
               Apply
             </button>
+            </div>
           </div>
         </Modal>
         <div

@@ -88,42 +88,18 @@
 //custom form button
 
 .form__btn {
-  color: #fff !important;
-  font-size: 1rem;
   text-transform: uppercase;
-  font-weight: 300;
-  padding: 12px 20px;
-  margin: 15px 0;
-  border: 1px solid transparent;
-  border-radius: 0;
+  color: #ffffff;
+  border: none;
   outline: none;
-  transition: all 0.2s ease-in-out;
-  -webkit-appearance: none;
-
+  border-radius: 5px;
   background: $primary2;
-  border: 1px solid $primary2;
-  fill: $primary2;
   cursor: pointer;
 
-  &:hover,
-  &:hover:after,
-  &.btn-fillup:after {
-    background: darken($primary2, 10%);
-    color: darken($primary2, 30%);
-    border: 1px solid transparent;
-  }
-
   &.disabled {
-    background: #eee;
-    color: #333;
-    border: 1px solid #d2d2d2;
+    opacity: 0.6;
+    background: $primary5;
     cursor: not-allowed;
-
-    &:hover,
-    &:hover:after {
-      background: #eee;
-      color: #333;
-    }
   }
 }
 
@@ -138,21 +114,36 @@
     }
   }
   .success {
-    color: #00ad8d;
+    color: $primary2;
+  }
+  .upload_button {
+    background-color: $primary3;
+    color: white;
+    border-radius: 5px;
+    &:hover {
+      opacity: 0.8;
+    }
   }
   .error {
     color: red;
   }
+  .recptcha-wrapper {
+    > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
   @include tablet-portrait-and-below {
+    .w-50 {
+      width: 100%;
+    }
+    .flex {
+      flex-direction: column;
+    }
     .form-group {
       margin: 0;
     }
-    .grid-cols-2 {
-      grid-template-columns: repeat(1,1fr) !important;
-    }
-    .grid-gap-2 {
-        grid-gap: 5px;
-    }
+
     .g-recaptcha {
       transform:scale(0.77);
       transform-origin:0 0;
